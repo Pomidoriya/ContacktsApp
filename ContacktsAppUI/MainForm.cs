@@ -26,7 +26,7 @@ namespace ContacktsAppUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Contact contact = new Contact(71233231221, "Vasya", "Pupkin", "v2123@gm.re", DateTime.Now, "123132313");
+            Contact contact = new Contact(71233231221, "igor", "Serdyuk", "igorserd@gm.re", DateTime.Now, "77078677680");
             listContacts.contactsList.Add(contact);
             ProjectManager.SaveToFile(listContacts);
             
@@ -43,5 +43,7 @@ namespace ContacktsAppUI
                 label1.Text = i.Name + " "+ i.Surname + " " + i.IdVk + " " + i.Email + " " + i.DateOfBirth + " " + i.phoneNumber;
             }
         }
+
+       
     }
 }
