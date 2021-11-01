@@ -26,8 +26,8 @@ namespace ContacktsAppUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Contact contact = new Contact(71233231221, "igor", "Serdyuk", "igorserd@gm.re", DateTime.Now, "77078677680");
-            listContacts.contactsList.Add(contact);
+            Contact contact = new Contact(71233231221, "igor", "Serdyuk", "igorserd@gm.re", DateTime.Now, "77078677680"); 
+            listContacts.contactsList.Add(contact);//занесенные в файл данные которые будут на экран выводится
             ProjectManager.SaveToFile(listContacts);
             
            

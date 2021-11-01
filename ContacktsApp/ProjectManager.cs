@@ -13,7 +13,7 @@ namespace ContacktsApp
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string stringMyDocumentsPath = @"D:\111.txt";//переместить ссылку на сохранение в myDocuments
+        public static readonly string stringMyDocumentsPath = @"D:\111.txt";//переместить ссылку на сохранение в myDocuments или APPDATA
                                                                             // сделал временно для проверки через форму
         /// <summary>
         /// Метод, выполняющий запись в файл 
