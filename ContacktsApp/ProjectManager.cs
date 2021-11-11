@@ -10,22 +10,25 @@ namespace ContacktsApp
     /// </summary>
     public class ProjectManager
     {
+        //TODO: переменная приравненая к адрессу, для дальнейшего улучшению
+        private const string V = "C:\\Users\\Игорь\\AppData\\Roaming\\111.txt";
+        
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string stringMyDocumentsPath = @"D:\111.txt";//переместить ссылку на сохранение в myDocuments или APPDATA
+        public static readonly string FilesDirectory = V;//переместить ссылку на сохранение в myDocuments или APPDATA
                                                                             // сделал временно для проверки через форму
         /// <summary>
         /// Метод, выполняющий запись в файл 
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
-        /// <param name="fileContactAppPath">Путь к файлу</param>
+     
         public static void SaveToFile(Project contact)
         {
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            var directoryFileContactApp = System.IO.Path.GetDirectoryName(stringMyDocumentsPath);
+            var directoryFileContactApp = System.IO.Path.GetDirectoryName(FilesDirectory);
 
             //Проверка на папку. Если нет папки ContactsApp, то создаем ее.
             if (!System.IO.Directory.Exists(directoryFileContactApp))
@@ -34,12 +37,12 @@ namespace ContacktsApp
             }
 
             //Проверка на файл. Еси нет файла, то создаем его.
-            if (!System.IO.File.Exists(stringMyDocumentsPath))
+            if (!System.IO.File.Exists(FilesDirectory))
             {
-                File.Create(stringMyDocumentsPath).Close();
+                File.Create(FilesDirectory).Close();
             }
 
-            using (StreamWriter sw = new StreamWriter(stringMyDocumentsPath))
+            using (StreamWriter sw = new StreamWriter(FilesDirectory))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызов сериализатора и передача объекта сериализации
@@ -50,8 +53,8 @@ namespace ContacktsApp
         /// <summary>
         /// Метод, выполняющий чтение из файла 
         /// </summary>
-        /// <param name="fileContactAppPath">Путь к файлу</param>
-        /// <returns>Экземпляр проекта, считанный из файла</returns>
+        
+        
         public static Project LoadFromFile()
         {
             //Переменная, в которую будет помещен результат десериализации
@@ -61,10 +64,10 @@ namespace ContacktsApp
             JsonSerializer serializer = new JsonSerializer();
 
             //Проверка на наличие файла
-            if (System.IO.File.Exists(stringMyDocumentsPath))
+            if (System.IO.File.Exists(FilesDirectory))
             {
                 //Открываем поток для чтения из файла с указанием пути
-                using (StreamReader sr = new StreamReader(stringMyDocumentsPath))
+                using (StreamReader sr = new StreamReader(FilesDirectory))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
                     //Вызываем десериализацию и явно преобразуем результат в целевой тип данных

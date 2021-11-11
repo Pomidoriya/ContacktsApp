@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContacktsAppUI", "ContacktsAppUI.csproj", "{91815886-67E7-40B3-908F-994C5482915A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContacktsApp", "..\ContacktsApp\ContacktsApp.csproj", "{90CA5981-888A-4230-A6C5-96F72E75D95E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp", "..\ContacktsApp\ContactsApp.csproj", "{90CA5981-888A-4230-A6C5-96F72E75D95E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
