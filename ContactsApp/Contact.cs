@@ -109,7 +109,7 @@ namespace ContacktsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели фамилию, состоящую более чем из 50 символов.\n" +
-                        "Введите фамилию, длиной до 50 символов.");
+                        "Введите фамилию, длиной до 50 символов!");
                 }
 
                 //Фамилия не может быть короче 1 символов (есть фамилии с 2 буквой)
@@ -117,13 +117,13 @@ namespace ContacktsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели фамилию, состоящую менее чем из 2 символов.\n" +
-                        "Введите фамилию, длиной более 2 символов.");
+                        "Введите фамилию, длиной более 2 символов!");
                 }
 
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Вы ввели пустую строку.\nПовторите ввод.");
+                    throw new ArgumentException("Вы ввели пустую строку.\nПовторите ввод!");
                 }
                 else
                 {
@@ -158,7 +158,7 @@ namespace ContacktsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели имя, состоящее более чем из 60 символов.\n" +
-                        "Введите имя, длиной до 60 символов.");
+                        "Введите имя, длиной до 60 символов!");
                 }
 
                 //Имя не может быть короче 1 символов.
@@ -166,13 +166,13 @@ namespace ContacktsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели имя, состоящее менее чем из 1 символов.\n" +
-                        "Введите имя, длиной более 1 символов.");
+                        "Введите имя, длиной более 1 символов!");
                 }
 
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод!");
                 }
                 else
                 {
@@ -207,12 +207,12 @@ namespace ContacktsApp
                 {
                     throw new ArgumentException(
                         "Вы ввели e-mail, длиной более чем 64 символов.\n" +
-                        "Введите e-mail, длиной до 64 символов.");
+                        "Введите e-mail, длиной до 64 символов!");
                 }
                 //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
+                    throw new ArgumentException("Вы ввели пустую строку. Повторите ввод!");
                 }
                 else
                     _email = value;
