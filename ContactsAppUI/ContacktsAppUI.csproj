@@ -80,7 +80,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContacktsApp\ContactsApp.csproj">
+    <ProjectReference Include="..\ContactsApp\ContactsApp.csproj">
       <Project>{90ca5981-888a-4230-a6c5-96f72e75d95e}</Project>
       <Name>ContactsApp</Name>
     </ProjectReference>
