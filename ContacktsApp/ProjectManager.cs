@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 namespace ContacktsApp
 {
@@ -10,19 +8,18 @@ namespace ContacktsApp
     /// </summary>
     public class ProjectManager
     {
-        //TODO: переменная приравненая к адрессу, для дальнейшего улучшению
-        private const string V = "C:\\Users\\Игорь\\AppData\\Roaming\\111.txt";
-        
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string FilesDirectory = V;//переместить ссылку на сохранение в myDocuments или APPDATA
-                                                                            // сделал временно для проверки через форму
+        public static readonly string FilesDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+            "\\Roaming" + "\\ContactApp" + "\\ContactApp.txt";
+        //путь к папке appdata+roaming
+
         /// <summary>
         /// Метод, выполняющий запись в файл 
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
-     
+        /// <param name="fileContactAppPath">Путь к файлу</param>
         public static void SaveToFile(Project contact)
         {
             // Экземпляр сериалиатора
@@ -30,13 +27,13 @@ namespace ContacktsApp
 
             var directoryFileContactApp = System.IO.Path.GetDirectoryName(FilesDirectory);
 
-            //Проверка на папку. Если нет папки ContactsApp, то создаем ее.
+            //Проверка на наличие папки, если нет папки - создаем ее.
             if (!System.IO.Directory.Exists(directoryFileContactApp))
             {
                 Directory.CreateDirectory(directoryFileContactApp);
             }
 
-            //Проверка на файл. Еси нет файла, то создаем его.
+            //Проверка на наличие файла, если его нет - создаем.
             if (!System.IO.File.Exists(FilesDirectory))
             {
                 File.Create(FilesDirectory).Close();
@@ -57,7 +54,7 @@ namespace ContacktsApp
         
         public static Project LoadFromFile()
         {
-            //Переменная, в которую будет помещен результат десериализации
+            //Переменная, в которую будет помещен результат 
             Project project = new Project();
 
             //Экземпляр сериализатора
@@ -66,11 +63,11 @@ namespace ContacktsApp
             //Проверка на наличие файла
             if (System.IO.File.Exists(FilesDirectory))
             {
-                //Открываем поток для чтения из файла с указанием пути
+                //Открываем для чтения из файла с указанием пути
                 using (StreamReader sr = new StreamReader(FilesDirectory))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
-                    //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
+                    //Вызываем десериализацию и преобразуем в целевой тип данных
                     project = (Project)serializer.Deserialize<Project>(reader);
                 }
             }

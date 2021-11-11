@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContacktsApp;
 namespace ContacktsAppUI
@@ -23,27 +16,5 @@ namespace ContacktsAppUI
         {
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Contact contact = new Contact(71233231221, "igor", "Serdyuk", "igorserd@gm.re", DateTime.Now, "77078677680"); 
-            listContacts.contactsList.Add(contact);//занесенные в файл данные которые будут на экран выводится
-            ProjectManager.SaveToFile(listContacts);
-            
-           
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            listContacts1 = ProjectManager.LoadFromFile();
-
-            foreach(Contact i in listContacts1.contactsList)
-            {
-                label1.Text = i.Name + " "+ i.Surname + " " + i.IdVk + " " + i.Email + " " + i.DateOfBirth + " " + i.phoneNumber;
-            }
-        }
-
-       
     }
 }
