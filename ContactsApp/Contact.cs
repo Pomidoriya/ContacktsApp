@@ -79,14 +79,13 @@ namespace ContacktsApp
             get { return _idVk; }
             set
             {
-                //ID не может быть длиннее 15 символов.
                 if (value.Length > 12)
                 {
                     throw new ArgumentException(
                         "ID Вконтакте не может превышать 12 символов.\n"
                         + "Введите ID, который не превышает 12 символов");
                 }
-                //Проверка на пустую строку.
+
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод.");
@@ -112,7 +111,7 @@ namespace ContacktsApp
                         "Введите фамилию, длиной до 50 символов!");
                 }
 
-                //Фамилия не может быть короче 1 символов (есть фамилии с 2 буквой)
+                //Фамилия не может быть короче 2 символов (есть фамилии с 2 буквой)
                 if (value.Length < 2)
                 {
                     throw new ArgumentException(
@@ -120,7 +119,6 @@ namespace ContacktsApp
                         "Введите фамилию, длиной более 2 символов!");
                 }
 
-                //Проверка на пустую строку.
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку.\nПовторите ввод!");
@@ -153,7 +151,6 @@ namespace ContacktsApp
             get { return _name; }
             set
             {
-                //Имя не может быть длиннее 60 символов.
                 if (value.Length > 60)
                 {
                     throw new ArgumentException(
@@ -161,12 +158,11 @@ namespace ContacktsApp
                         "Введите имя, длиной до 60 символов!");
                 }
 
-                //Имя не может быть короче 1 символов.
-                if (value.Length < 1)
+                if (value.Length < 2)
                 {
                     throw new ArgumentException(
-                        "Вы ввели имя, состоящее менее чем из 1 символов.\n" +
-                        "Введите имя, длиной более 1 символов!");
+                        "Вы ввели имя, состоящее менее чем из 2 символов.\n" +
+                        "Введите имя, длиной более 2 символов!");
                 }
 
                 //Проверка на пустую строку.
@@ -202,14 +198,13 @@ namespace ContacktsApp
             get { return _email; }
             set
             {
-                //E-mail не может быть длиннее чем 64 символа.
                 if (value.Length > 64)
                 {
                     throw new ArgumentException(
                         "Вы ввели e-mail, длиной более чем 64 символов.\n" +
                         "Введите e-mail, длиной до 64 символов!");
                 }
-                //Проверка на пустую строку.
+
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException("Вы ввели пустую строку. Повторите ввод!");
