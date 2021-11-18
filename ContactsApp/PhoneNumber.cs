@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ContacktsApp
+namespace ContactsApp
 {
     /// <summary>
     /// Класс, принимающий и возвращающий номер телефона учащегося.

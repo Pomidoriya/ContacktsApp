@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-namespace ContacktsApp
+namespace ContactsApp
 {
     /// <summary>
     /// Класс, реализующий сохранение данных в файл и загрузки из него.
@@ -12,7 +12,7 @@ namespace ContacktsApp
         /// Стандартный путь к файлу.
         /// </summary>
         public static readonly string FilesDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-            "\\Roaming" + "\\ContactApp" + "\\ContactApp.txt";
+             "\\ContactApp" + "\\ContactApp.txt";
         //путь к папке appdata+roaming
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace ContacktsApp
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
         /// <param name="fileContactAppPath">Путь к файлу</param>
-        public static void SaveToFile(Project contact)
+        public static void SaveToFile(Project contact, string FilesDirectory)
         {
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
@@ -52,7 +52,7 @@ namespace ContacktsApp
         /// </summary>
         
         
-        public static Project LoadFromFile()
+        public static Project LoadFromFile(string FilesDirectory)
         {
             //Переменная, в которую будет помещен результат 
             Project project = new Project();

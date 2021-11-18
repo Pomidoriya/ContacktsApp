@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContacktsApp
+namespace ContactsApp
 {
     /// <summary>
     /// Класс, содержащий контакт.
