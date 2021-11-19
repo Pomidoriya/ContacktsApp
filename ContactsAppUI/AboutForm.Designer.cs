@@ -117,10 +117,10 @@
             this.linkLabel2.Location = new System.Drawing.Point(80, 207);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(285, 17);
+            this.linkLabel2.Size = new System.Drawing.Size(278, 17);
             this.linkLabel2.TabIndex = 7;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "https://github.com/Pomidoriya/ContacktsApp";
+            this.linkLabel2.Text = "https://github.com/Pomidoriya/ContactsApp";
             // 
             // AboutForm
             // 
