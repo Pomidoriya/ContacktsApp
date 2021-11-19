@@ -38,9 +38,9 @@ namespace ContactsApp
         public PhoneNumber phoneNumber = new PhoneNumber();
 
         /// <summary>
-        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1901)
+        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
         /// </summary>
-        private readonly DateTime _dateMinimum = new DateTime(1901, 01, 01);
+        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
 
         /// <summary>
         /// Метод, устанавливающий и возвращающий дату рождения контакта.
@@ -50,12 +50,12 @@ namespace ContactsApp
             get { return _dateOfBirth; }
             set
             {
-                //Дата рождения не может быть раньше 1 января 1901 года.
+                //Дата рождения не может быть раньше 1 января 1900 года.
                 if (value < _dateMinimum)
                 {
                     throw new ArgumentException(
                         "Вы ввели неправильную дату рождения.\n"
-                        + "Введите дату, начиная с 1901 года.");
+                        + "Введите дату, начиная с 1900 года.");
                 }
 
                 //Дата рождения не может быть больше нынешней даты.
