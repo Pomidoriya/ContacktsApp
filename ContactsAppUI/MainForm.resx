@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="RemoveContactButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA+gAAAPoCAYAAABNo9TkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAFkhJREFUeF7t112OJFcVhdG2G2GsfgKLJzxgZg2FajfCxc4+/jmZGRmxlvQNYV/d
@@ -219,7 +219,7 @@
         AAAAAAAAAAAAAAAA3/bp078Biz0rzBIEIfoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="EditContactButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA9QAAAPSCAYAAACajZKZAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAZ6dJREFUeF7t3Qm8XWV973+SMEtAQJCCGEQGQbQWHBCliKiVlygFL9ZqRb0IjqXV
@@ -667,7 +667,7 @@
         8dR9crpnTvfO6R463Uune+p0b33nbTahrLfe/w+k11d7s5QVvQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="AddContactButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAMolJREFUeF7t3W2zm/dx2GHr8JkSKVGUFFGiLMu0HkZ16mpSN046mUlfuJN02u/V

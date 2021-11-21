@@ -42,9 +42,9 @@ namespace ContactsAppUI
 
             //Подсказка для кнопок Add, Remove, Edit
             ToolTip addRemoveEdiToolTip = new ToolTip();
-            addRemoveEdiToolTip.SetToolTip(AddContactButton, "Нажмите для добавления контакта в список.");
-            addRemoveEdiToolTip.SetToolTip(RemoveContactButton, "Нажмите для удаления контакта из списка.");
-            addRemoveEdiToolTip.SetToolTip(EditContactButton, "Нажмите для редактирования контакта.");
+            addRemoveEdiToolTip.SetToolTip(button1, "Нажмите для добавления контакта в список.");
+            addRemoveEdiToolTip.SetToolTip(button3, "Нажмите для удаления контакта из списка.");
+            addRemoveEdiToolTip.SetToolTip(button2, "Нажмите для редактирования контакта.");
         }
         
         /// <summary>
@@ -401,6 +401,21 @@ namespace ContactsAppUI
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddContact();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            RemoveContact();
         }
     }
 }
