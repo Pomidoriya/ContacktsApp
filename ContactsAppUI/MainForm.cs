@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;*/
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -25,18 +25,20 @@ namespace ContactsAppUI
             _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectory);
             int countContacts = 0;
 
-            //Пока количество записей в файле не равно количеству записей в ListBox.
+            //Выводим пока количество записей в файле не равно количеству записей в ListBox.
             while (countContacts != _project.contactsList.Count)
             {
-                ContactsListBox.Items.Add(_project.contactsList[countContacts].Surname);
+                ContactsListBox.Items.Add(_project.contactsList[countContacts].Surname+ " " 
+                    + _project.contactsList[countContacts].Name);
                 countContacts++;
             }
 
-           /* Project birthContact = Project.Birthday(_project, DateTime.Today);
+           Project birthContact = Project.Birthday(_project, DateTime.Today);
             for (int i = 0; i < birthContact.contactsList.Count; i++)
             {
-                BirthdayEnum.Text = BirthdayEnum.Text + birthContact.contactsList[i].Surname + ", ";
-            }*/
+                BirthdayEnum.Text = BirthdayEnum.Text + birthContact.contactsList[i].Surname +
+                    " " + birthContact.contactsList[i].Name +  ", ";
+            }
 
             //Подсказка для кнопок Add, Remove, Edit
             ToolTip addRemoveEdiToolTip = new ToolTip();
@@ -389,6 +391,16 @@ namespace ContactsAppUI
             {
                 RemoveContact();
             }
+        }
+
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
