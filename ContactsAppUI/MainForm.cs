@@ -1,11 +1,4 @@
 ﻿using System;
-/*using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;*/
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -26,18 +19,18 @@ namespace ContactsAppUI
             int countContacts = 0;
 
             //Выводим пока количество записей в файле не равно количеству записей в ListBox.
-            while (countContacts != _project.contactsList.Count)
+            while (countContacts != _project._contactsList.Count)
             {
-                ContactsListBox.Items.Add(_project.contactsList[countContacts].Surname+ " " 
-                    + _project.contactsList[countContacts].Name);
+                ContactsListBox.Items.Add(_project._contactsList[countContacts].Surname+ " " 
+                    + _project._contactsList[countContacts].Name);
                 countContacts++;
             }
 
            Project birthContact = Project.Birthday(_project, DateTime.Today);
-            for (int i = 0; i < birthContact.contactsList.Count; i++)
+            for (int i = 0; i < birthContact._contactsList.Count; i++)
             {
-                BirthdayEnum.Text = BirthdayEnum.Text + birthContact.contactsList[i].Surname +
-                    " " + birthContact.contactsList[i].Name +  ", ";
+                BirthdayEnum.Text = BirthdayEnum.Text + birthContact._contactsList[i].Surname +
+                    " " + birthContact._contactsList[i].Name +  ", ";
             }
 
             //Подсказка для кнопок Add, Remove, Edit
@@ -61,18 +54,18 @@ namespace ContactsAppUI
             if (resultOfDialog == DialogResult.OK)
             {
                 var contact = newForm.Contact;
-                _project.contactsList.Add(contact);
+                _project._contactsList.Add(contact);
                
-                for (int i = 0; i != _project.contactsList.Count - 1; i++)
+                for (int i = 0; i != _project._contactsList.Count - 1; i++)
                 {
                     ContactsListBox.Items.RemoveAt(0);
                 }
 
                 _project = Project.Sort(_project);
 
-                for (int j = 0; j != _project.contactsList.Count; j++)
+                for (int j = 0; j != _project._contactsList.Count; j++)
                 {
-                    ContactsListBox.Items.Add(_project.contactsList[j].Surname);
+                    ContactsListBox.Items.Add(_project._contactsList[j].Surname);
                 }
 
                 ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
@@ -92,7 +85,7 @@ namespace ContactsAppUI
             }
 
             //Если список не пуст.
-            if (_project.contactsList.Count > 0)
+            if (_project._contactsList.Count > 0)
             {
                 if (index >= 0)
                 {
@@ -102,7 +95,7 @@ namespace ContactsAppUI
                     var result = MessageBox.Show(removeThisContact, "Remove", MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
-                        _project.contactsList.RemoveAt(index);
+                        _project._contactsList.RemoveAt(index);
                         ContactsListBox.Items.RemoveAt(index);
                         ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
                     }
@@ -130,22 +123,22 @@ namespace ContactsAppUI
             }
 
             //Если список не пуст.
-            if (_project.contactsList.Count > 0)
+            if (_project._contactsList.Count > 0)
             {
                 if (index >= 0)
                 {
-                    var contactOfIndex = _project.contactsList[index];
+                    var contactOfIndex = _project._contactsList[index];
                     int sortIndex = 0;
 
                     //Если сортированный список не пуст, то выбираем элемент из него
-                    if (_sortProject != null && _sortProject.contactsList.Count > 0 && FindTextBox.Text != "")
+                    if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
                     {
-                        contactOfIndex = _sortProject.contactsList[index];
+                        contactOfIndex = _sortProject._contactsList[index];
                         sortIndex = index;
 
-                        for (int i = 0; i < _project.contactsList.Count; i++)
+                        for (int i = 0; i < _project._contactsList.Count; i++)
                         {
-                            if (contactOfIndex == _project.contactsList[i])
+                            if (contactOfIndex == _project._contactsList[i])
                             {
                                 index = i;
                                 break;
@@ -166,11 +159,11 @@ namespace ContactsAppUI
                         contactOfIndex = newForm.Contact;
 
                         //Если введена подстрока.
-                        if (_sortProject != null && _sortProject.contactsList.Count > 0 && FindTextBox.Text != "")
+                        if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
                         {
-                            _project.contactsList.RemoveAt(index);
-                            _sortProject.contactsList.RemoveAt(sortIndex);
-                            _project.contactsList.Insert(index, contactOfIndex);
+                            _project._contactsList.RemoveAt(index);
+                            _sortProject._contactsList.RemoveAt(sortIndex);
+                            _project._contactsList.Insert(index, contactOfIndex);
 
                             while (ContactsListBox.Items.Count != 0)
                             {
@@ -179,11 +172,11 @@ namespace ContactsAppUI
 
                             _sortProject = Project.Sort(_project, FindTextBox.Text);
                             
-                            if (_sortProject != null && _sortProject.contactsList.Count != 0)
+                            if (_sortProject != null && _sortProject._contactsList.Count != 0)
                             {
-                                for (int i = 0; i < _sortProject.contactsList.Count; i++)
+                                for (int i = 0; i < _sortProject._contactsList.Count; i++)
                                 {
-                                    ContactsListBox.Items.Add(_sortProject.contactsList[i].Surname);
+                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
                                 }
                             }
 
@@ -193,8 +186,8 @@ namespace ContactsAppUI
                         //Если подстрока не введена.
                         else
                         {
-                            _project.contactsList.RemoveAt(index);
-                            _project.contactsList.Insert(index, contactOfIndex);
+                            _project._contactsList.RemoveAt(index);
+                            _project._contactsList.Insert(index, contactOfIndex);
 
                             while (ContactsListBox.Items.Count != 0)
                             {
@@ -203,9 +196,9 @@ namespace ContactsAppUI
 
                             _project = Project.Sort(_project);
 
-                            for (int j = 0; j != _project.contactsList.Count; j++)
+                            for (int j = 0; j != _project._contactsList.Count; j++)
                             {
-                                ContactsListBox.Items.Add(_project.contactsList[j].Surname);
+                                ContactsListBox.Items.Add(_project._contactsList[j].Surname);
                             }
                         }
 
@@ -264,18 +257,18 @@ namespace ContactsAppUI
                 VkTextBox.Text = null;
             }
 
-            if (_project.contactsList.Count > 0)
+            if (_project._contactsList.Count > 0)
             {
                 if (selectedIndex >= 0)
                 {
                     Contact contact;
-                    if (_sortProject != null && _sortProject.contactsList.Count > 0 && FindTextBox.Text != "")
+                    if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
                     {
-                        contact = _sortProject.contactsList[selectedIndex];
+                        contact = _sortProject._contactsList[selectedIndex];
                     }
                     else
                     { 
-                        contact = _project.contactsList[selectedIndex];
+                        contact = _project._contactsList[selectedIndex];
                     }
 
                     //Заполняем правую часть главной формы данными выбранного элемента.
@@ -351,9 +344,9 @@ namespace ContactsAppUI
                 {
                     ContactsListBox.Items.RemoveAt(0);
                 }
-                for (int i = 0; i != _project.contactsList.Count; i++)
+                for (int i = 0; i != _project._contactsList.Count; i++)
                 {
-                    ContactsListBox.Items.Add(_project.contactsList[i].Surname);
+                    ContactsListBox.Items.Add(_project._contactsList[i].Surname);
                 }
             }
 
@@ -374,9 +367,9 @@ namespace ContactsAppUI
                     {
                         ContactsListBox.Items.RemoveAt(0);
                     }
-                    for (int i = 0; i != _sortProject.contactsList.Count; i++)
+                    for (int i = 0; i != _sortProject._contactsList.Count; i++)
                     {
-                        ContactsListBox.Items.Add(_sortProject.contactsList[i].Surname);
+                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
                     }
                 }
             }
