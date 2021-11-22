@@ -11,21 +11,21 @@ namespace ContactsApp
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string FilesDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+        public static readonly string FilesDirectoryDefault = 
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
              "\\ContactApp" + "\\ContactApp.txt";
-        //путь к папке appdata+roaming
 
         /// <summary>
         /// Метод, выполняющий запись в файл 
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
-        /// <param name="fileContactAppPath">Путь к файлу</param>
-        public static void SaveToFile(Project contact, string FilesDirectory)
+        /// <param name="FilesDirectoryDefault">Путь к файлу</param>
+        public static void SaveToFile(Project contact, string FilesDirectoryDefault)
         {
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            var directoryFileContactApp = System.IO.Path.GetDirectoryName(FilesDirectory);
+            var directoryFileContactApp = System.IO.Path.GetDirectoryName(FilesDirectoryDefault);
 
             //Проверка на наличие папки, если нет папки - создаем ее.
             if (!System.IO.Directory.Exists(directoryFileContactApp))
@@ -34,12 +34,12 @@ namespace ContactsApp
             }
 
             //Проверка на наличие файла, если его нет - создаем.
-            if (!System.IO.File.Exists(FilesDirectory))
+            if (!System.IO.File.Exists(FilesDirectoryDefault))
             {
-                File.Create(FilesDirectory).Close();
+                File.Create(FilesDirectoryDefault).Close();
             }
 
-            using (StreamWriter sw = new StreamWriter(FilesDirectory))
+            using (StreamWriter sw = new StreamWriter(FilesDirectoryDefault))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызов сериализатора и передача объекта сериализации

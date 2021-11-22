@@ -22,7 +22,7 @@ namespace ContactsAppUI
             InitializeComponent();
 
             //Выполняем десериализацию.
-            _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectory);
+            _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
             int countContacts = 0;
 
             //Выводим пока количество записей в файле не равно количеству записей в ListBox.
@@ -75,7 +75,7 @@ namespace ContactsAppUI
                     ContactsListBox.Items.Add(_project.contactsList[j].Surname);
                 }
 
-                ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectory);
+                ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
             }
         }
 
@@ -104,7 +104,7 @@ namespace ContactsAppUI
                     {
                         _project.contactsList.RemoveAt(index);
                         ContactsListBox.Items.RemoveAt(index);
-                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectory);
+                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
                     }
                 }
             }
@@ -210,7 +210,7 @@ namespace ContactsAppUI
                         }
 
                         //Выполняем сериализацию данных.
-                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectory);
+                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
                     }
                 }
                 else
@@ -346,7 +346,7 @@ namespace ContactsAppUI
         {
             if (FindTextBox.Text == "")
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectory);
+                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
                 while (ContactsListBox.Items.Count != 0)
                 {
                     ContactsListBox.Items.RemoveAt(0);
@@ -359,7 +359,7 @@ namespace ContactsAppUI
 
             else
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectory);
+                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
                 _sortProject = Project.Sort(_project, FindTextBox.Text);
                 if (_sortProject == null)
                 {
