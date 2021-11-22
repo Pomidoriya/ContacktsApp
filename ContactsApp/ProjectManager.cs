@@ -50,7 +50,7 @@ namespace ContactsApp
         /// <summary>
         /// Метод, выполняющий чтение из файла 
         /// </summary>
-        public static Project LoadFromFile(string FilesDirectory)
+        public static Project LoadFromFile(string FilesDirectoryDefault)
         {
             //Переменная, в которую будет помещен результат 
             Project project = new Project();
@@ -59,10 +59,10 @@ namespace ContactsApp
             JsonSerializer serializer = new JsonSerializer();
 
             //Проверка на наличие файла
-            if (File.Exists(FilesDirectory))
+            if (File.Exists(FilesDirectoryDefault))
             {
                 //Открываем для чтения из файла с указанием пути
-                using (StreamReader sr = new StreamReader(FilesDirectory))
+                using (StreamReader sr = new StreamReader(FilesDirectoryDefault))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
                     //Вызываем десериализацию и преобразуем в целевой тип данных
