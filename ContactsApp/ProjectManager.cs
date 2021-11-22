@@ -25,16 +25,16 @@ namespace ContactsApp
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            var directoryFileContactApp = System.IO.Path.GetDirectoryName(FilesDirectoryDefault);
+            var directoryFileContactApp = Path.GetDirectoryName(FilesDirectoryDefault);
 
             //Проверка на наличие папки, если нет папки - создаем ее.
-            if (!System.IO.Directory.Exists(directoryFileContactApp))
+            if (!Directory.Exists(directoryFileContactApp))
             {
                 Directory.CreateDirectory(directoryFileContactApp);
             }
 
             //Проверка на наличие файла, если его нет - создаем.
-            if (!System.IO.File.Exists(FilesDirectoryDefault))
+            if (!File.Exists(FilesDirectoryDefault))
             {
                 File.Create(FilesDirectoryDefault).Close();
             }
@@ -59,7 +59,7 @@ namespace ContactsApp
             JsonSerializer serializer = new JsonSerializer();
 
             //Проверка на наличие файла
-            if (System.IO.File.Exists(FilesDirectory))
+            if (File.Exists(FilesDirectory))
             {
                 //Открываем для чтения из файла с указанием пути
                 using (StreamReader sr = new StreamReader(FilesDirectory))
