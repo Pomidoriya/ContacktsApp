@@ -50,8 +50,6 @@ namespace ContactsApp
         /// <summary>
         /// Метод, выполняющий чтение из файла 
         /// </summary>
-        
-        
         public static Project LoadFromFile(string FilesDirectory)
         {
             //Переменная, в которую будет помещен результат 

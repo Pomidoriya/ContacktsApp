@@ -23,12 +23,11 @@ namespace ContactsApp
         {
             Project sortedProject = new Project();
 
-            //Добавляем 0 элемент несортированного списка в сортированный.
             sortedProject.contactsList.Add(project.contactsList[0]);
 
             for (int i = 1; i < project.contactsList.Count; i++)
             {
-                //Если фамилия из сортированного списка меньше или равна фамилии из несортированного списка, то вставляем несортированную фамилию после.
+                
                 if (sortedProject.contactsList[i - 1].Surname[0] < project.contactsList[i].Surname[0] ||
                     sortedProject.contactsList[i - 1] == project.contactsList[i])
                 {
@@ -38,7 +37,7 @@ namespace ContactsApp
 
                 int j = i;
 
-                //Флаг, разрешающий присвоение (true - пока не было добавлено элементов в сортированный список).
+                //Флаг, разрешающий присвоение
                 bool flag = true;
 
                 //Пока 1 символ отсортированной фамилии больше или равен 1 символа не сортированной
