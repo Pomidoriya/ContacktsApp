@@ -9,7 +9,9 @@ namespace ContactsApp
     public class PhoneNumber
     {
         private long _number;
-
+        /// <summary>
+        /// Метод, устанавливающий и возвращающий ID Vk контакта.
+        /// </summary>
         public long Number
         {
             get { return _number; }

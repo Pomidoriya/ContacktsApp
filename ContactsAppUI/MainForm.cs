@@ -15,7 +15,7 @@ namespace ContactsAppUI
             InitializeComponent();
 
             //Выполняем десериализацию.
-            _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
+            _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
             int countContacts = 0;
 
             //Выводим пока количество записей в файле не равно количеству записей в ListBox.
@@ -65,10 +65,11 @@ namespace ContactsAppUI
 
                 for (int j = 0; j != _project._contactsList.Count; j++)
                 {
-                    ContactsListBox.Items.Add(_project._contactsList[j].Surname);
+                    ContactsListBox.Items.Add(_project._contactsList[j].Surname +
+                    " " + _project._contactsList[j].Name);
                 }
 
-                ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
             }
         }
 
@@ -90,14 +91,14 @@ namespace ContactsAppUI
                 if (index >= 0)
                 {
                     string removeThisContact =
-                        "Do you really want to remove this contact: " + SurnameTextBox.Text + "?";
+                        "Вы точно хотите удалить контакт: " + SurnameTextBox.Text + " " +NameTextBox.Text + "?";
 
-                    var result = MessageBox.Show(removeThisContact, "Remove", MessageBoxButtons.OKCancel);
+                    var result = MessageBox.Show(removeThisContact, "Удалить", MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
                         _project._contactsList.RemoveAt(index);
                         ContactsListBox.Items.RemoveAt(index);
-                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
+                        ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
                     }
                 }
             }
@@ -105,7 +106,7 @@ namespace ContactsAppUI
             {
                 if (index >= 0)
                 {
-                    MessageBox.Show("Выберите запись для удаления.", "Remove");
+                    MessageBox.Show("Выберите запись для удаления.", "Удалить");
                 }
             }
         }
@@ -119,7 +120,7 @@ namespace ContactsAppUI
 
             if (index == -1)
             {
-                MessageBox.Show("Выберите запись для редактирования.", "Edit");
+                MessageBox.Show("Выберите запись для редактирования.", "Редактировать");
             }
 
             //Если список не пуст.
@@ -176,7 +177,8 @@ namespace ContactsAppUI
                             {
                                 for (int i = 0; i < _sortProject._contactsList.Count; i++)
                                 {
-                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
+                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname +
+                    " "+ _sortProject._contactsList[i].Name);
                                 }
                             }
 
@@ -198,19 +200,20 @@ namespace ContactsAppUI
 
                             for (int j = 0; j != _project._contactsList.Count; j++)
                             {
-                                ContactsListBox.Items.Add(_project._contactsList[j].Surname);
+                                ContactsListBox.Items.Add(_project._contactsList[j].Surname +
+                    " "+_project._contactsList[j].Name);
                             }
                         }
 
                         //Выполняем сериализацию данных.
-                        ProjectManager.SaveToFile(_project, ProjectManager.FilesDirectoryDefault);
+                        ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
                     }
                 }
                 else
                 {
                     if (index >= 0)
                     {
-                        MessageBox.Show("Выберите запись для редактирования.", "Edit");
+                        MessageBox.Show("Выберите запись для редактирования.", "Редактировать");
                     }
                 }
             }
@@ -339,20 +342,21 @@ namespace ContactsAppUI
         {
             if (FindTextBox.Text == "")
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
+                _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
                 while (ContactsListBox.Items.Count != 0)
                 {
                     ContactsListBox.Items.RemoveAt(0);
                 }
                 for (int i = 0; i != _project._contactsList.Count; i++)
                 {
-                    ContactsListBox.Items.Add(_project._contactsList[i].Surname);
+                    ContactsListBox.Items.Add(_project._contactsList[i].Surname +
+                    " " + _project._contactsList[i].Name);
                 }
             }
 
             else
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.FilesDirectoryDefault);
+                _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
                 _sortProject = Project.Sort(_project, FindTextBox.Text);
                 if (_sortProject == null)
                 {
@@ -369,7 +373,8 @@ namespace ContactsAppUI
                     }
                     for (int i = 0; i != _sortProject._contactsList.Count; i++)
                     {
-                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
+                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname +
+                    " " + _sortProject._contactsList[i].Name);
                     }
                 }
             }

@@ -11,7 +11,7 @@ namespace ContactsApp
         /// <summary>
         /// Стандартный путь к файлу.
         /// </summary>
-        public static readonly string FilesDirectoryDefault = 
+        public static readonly string DefaultFilePath = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
              "\\ContactApp" + "\\ContactApp.txt";
 
@@ -19,13 +19,13 @@ namespace ContactsApp
         /// Метод, выполняющий запись в файл 
         /// </summary>
         /// <param name="contact">Экземпляр проекта для сериализации</param>
-        /// <param name="FilesDirectoryDefault">Путь к файлу</param>
-        public static void SaveToFile(Project contact, string FilesDirectoryDefault)
+        /// <param name="DefaultFilePath">Путь к файлу</param>
+        public static void SaveToFile(Project contact, string DefaultFilePath)
         {
             // Экземпляр сериалиатора
             JsonSerializer serializer = new JsonSerializer();
 
-            var directoryFileContactApp = Path.GetDirectoryName(FilesDirectoryDefault);
+            var directoryFileContactApp = Path.GetDirectoryName(DefaultFilePath);
 
             //Проверка на наличие папки, если нет папки - создаем ее.
             if (!Directory.Exists(directoryFileContactApp))
@@ -34,12 +34,12 @@ namespace ContactsApp
             }
 
             //Проверка на наличие файла, если его нет - создаем.
-            if (!File.Exists(FilesDirectoryDefault))
+            if (!File.Exists(DefaultFilePath))
             {
-                File.Create(FilesDirectoryDefault).Close();
+                File.Create(DefaultFilePath).Close();
             }
 
-            using (StreamWriter sw = new StreamWriter(FilesDirectoryDefault))
+            using (StreamWriter sw = new StreamWriter(DefaultFilePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызов сериализатора и передача объекта сериализации
@@ -50,7 +50,7 @@ namespace ContactsApp
         /// <summary>
         /// Метод, выполняющий чтение из файла 
         /// </summary>
-        public static Project LoadFromFile(string FilesDirectoryDefault)
+        public static Project LoadFromFile(string DefaultFilePath)
         {
             //Переменная, в которую будет помещен результат 
             Project project = new Project();
@@ -61,10 +61,10 @@ namespace ContactsApp
             try
             {
                 //Проверка на наличие файла
-                if (File.Exists(FilesDirectoryDefault))
+                if (File.Exists(DefaultFilePath))
                 {
                     //Открываем для чтения из файла с указанием пути
-                    using (StreamReader sr = new StreamReader(FilesDirectoryDefault))
+                    using (StreamReader sr = new StreamReader(DefaultFilePath))
                     using (JsonReader reader = new JsonTextReader(sr))
                     {
                         //Вызываем десериализацию и преобразуем в целевой тип данных
