@@ -82,7 +82,7 @@ namespace ContactsAppUI
 
             if (index == -1)
             {
-                MessageBox.Show("Выберите запись для удаления.", "Remove");
+                MessageBox.Show("Выберите запись для удаления.", "Удалить");
             }
 
             //Если список не пуст.
