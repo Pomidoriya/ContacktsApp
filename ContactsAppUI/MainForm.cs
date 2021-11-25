@@ -29,8 +29,8 @@ namespace ContactsAppUI
            Project birthContact = Project.Birthday(_project, DateTime.Today);
             for (int i = 0; i < birthContact._contactsList.Count; i++)
             {
-                BirthdayEnum.Text = BirthdayEnum.Text + birthContact._contactsList[i].Surname +
-                    " " + birthContact._contactsList[i].Name +  ", ";
+                BirthdayEnum.Text = BirthdayEnum.Text +"• "+ birthContact._contactsList[i].Surname +
+                    " " + birthContact._contactsList[i].Name +  "\n";
             }
 
             //Подсказка для кнопок Add, Remove, Edit

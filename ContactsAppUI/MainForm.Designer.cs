@@ -77,7 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FindTextBox.Location = new System.Drawing.Point(39, 7);
             this.FindTextBox.Name = "FindTextBox";
-            this.FindTextBox.Size = new System.Drawing.Size(180, 20);
+            this.FindTextBox.Size = new System.Drawing.Size(179, 20);
             this.FindTextBox.TabIndex = 0;
             this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
@@ -253,7 +253,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.BirthdayDateTimePicker);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Size = new System.Drawing.Size(624, 349);
-            this.splitContainer1.SplitterDistance = 229;
+            this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.TabIndex = 14;
             // 
             // button3
@@ -307,7 +307,7 @@
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.Location = new System.Drawing.Point(3, 34);
             this.ContactsListBox.Name = "ContactsListBox";
-            this.ContactsListBox.Size = new System.Drawing.Size(216, 277);
+            this.ContactsListBox.Size = new System.Drawing.Size(215, 277);
             this.ContactsListBox.TabIndex = 2;
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             this.ContactsListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContactsListBox_KeyDown);
@@ -318,9 +318,9 @@
             this.panel1.Controls.Add(this.BirthdayEnum);
             this.panel1.Controls.Add(this.Birthday);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 271);
+            this.panel1.Location = new System.Drawing.Point(3, 247);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 76);
+            this.panel1.Size = new System.Drawing.Size(387, 101);
             this.panel1.TabIndex = 15;
             // 
             // BirthdayEnum
@@ -436,7 +436,7 @@
             this.Controls.Add(this.MenuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(639, 409);
+            this.MinimumSize = new System.Drawing.Size(638, 408);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContactsApp";
