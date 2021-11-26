@@ -162,7 +162,7 @@
             this.BirthdayDateTimePicker.Enabled = false;
             this.BirthdayDateTimePicker.Location = new System.Drawing.Point(67, 60);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(164, 20);
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(163, 20);
             this.BirthdayDateTimePicker.TabIndex = 4;
             this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
             // 
@@ -314,13 +314,15 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.BirthdayEnum);
             this.panel1.Controls.Add(this.Birthday);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 247);
+            this.panel1.Location = new System.Drawing.Point(6, 245);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 101);
+            this.panel1.Size = new System.Drawing.Size(383, 101);
             this.panel1.TabIndex = 15;
             // 
             // BirthdayEnum
@@ -436,7 +438,7 @@
             this.Controls.Add(this.MenuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(638, 408);
+            this.MinimumSize = new System.Drawing.Size(638, 406);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContactsApp";
