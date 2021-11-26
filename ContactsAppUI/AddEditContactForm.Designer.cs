@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelAndCloseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SurnameTextBox
@@ -182,21 +182,21 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Location = new System.Drawing.Point(384, 176);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 33);
-            this.CancelButton.TabIndex = 13;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelAndCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelAndCloseButton.Location = new System.Drawing.Point(384, 176);
+            this.CancelAndCloseButton.Name = "CancelButton";
+            this.CancelAndCloseButton.Size = new System.Drawing.Size(75, 33);
+            this.CancelAndCloseButton.TabIndex = 13;
+            this.CancelAndCloseButton.Text = "Cancel";
+            this.CancelAndCloseButton.UseVisualStyleBackColor = true;
+            this.CancelAndCloseButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AddEditContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 221);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelAndCloseButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -236,6 +236,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelAndCloseButton;
     }
 }
