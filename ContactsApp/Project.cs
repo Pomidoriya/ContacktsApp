@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace ContactsApp
 {
+    using System.Linq;
     /// <summary>
     /// Класс, содержащий лист всех контактов.
     /// </summary>
@@ -19,11 +20,15 @@ namespace ContactsApp
         /// </summary>
         /// <param name="project">Список, который нужно отсортировать</param>
         /// <returns>Отсортированный список</returns>
-         public static Project Sort(Project project) //TODO: сделать встроенную сортировку
+        
+        public static Project Sort(Project project) //TODO: сделать встроенную сортировку
         {
             Project sortedProject = new Project();
            sortedProject._contactsList.Add(project._contactsList[0]);
-
+            /*
+             var unsortedContacts = project._contactsList;
+            var sortedContacts = unsortedContacts.OrderBy(contact => contact.Surname).ToList(); //встроенная сортировка
+            */
              for (int i = 1; i < project._contactsList.Count; i++)
              {
 
@@ -222,10 +227,9 @@ namespace ContactsApp
                      sortedProject._contactsList.Insert(j, project._contactsList[i]);
                  }
              }
-
              return sortedProject;
         }
-
+        
         /// <summary>
         /// Функция, которая выполняет поиск контактов по имени и фамилии по указанной подстроке и сортирует их в алфавитном порядке.
         /// </summary>
