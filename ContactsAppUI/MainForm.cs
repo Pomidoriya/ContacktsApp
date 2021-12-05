@@ -35,9 +35,9 @@ namespace ContactsAppUI
 
             //Подсказка для кнопок Add, Remove, Edit
             ToolTip addRemoveEdiToolTip = new ToolTip();
-            addRemoveEdiToolTip.SetToolTip(button1, "Нажмите для добавления контакта в список.");
-            addRemoveEdiToolTip.SetToolTip(button3, "Нажмите для удаления контакта из списка.");
-            addRemoveEdiToolTip.SetToolTip(button2, "Нажмите для редактирования контакта.");
+            addRemoveEdiToolTip.SetToolTip(AddButton, "Нажмите для добавления контакта в список.");
+            addRemoveEdiToolTip.SetToolTip(DeleteButton, "Нажмите для удаления контакта из списка.");
+            addRemoveEdiToolTip.SetToolTip(EditButton, "Нажмите для редактирования контакта.");
         }
         
         /// <summary>
@@ -178,7 +178,7 @@ namespace ContactsAppUI
                                 for (int i = 0; i < _sortProject._contactsList.Count; i++)
                                 {
                                     ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname +
-                    " "+ _sortProject._contactsList[i].Name);
+                                    " "+ _sortProject._contactsList[i].Name);
                                 }
                             }
 
@@ -201,7 +201,7 @@ namespace ContactsAppUI
                             for (int j = 0; j != _project._contactsList.Count; j++)
                             {
                                 ContactsListBox.Items.Add(_project._contactsList[j].Surname +
-                    " "+_project._contactsList[j].Name);
+                                 " "+_project._contactsList[j].Name);
                             }
                         }
 
@@ -401,17 +401,17 @@ namespace ContactsAppUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             AddContact();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             EditContact();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             RemoveContact();
         }
