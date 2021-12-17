@@ -98,11 +98,11 @@
             this.SurnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SurnameTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.SurnameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SurnameTextBox.Location = new System.Drawing.Point(67, 7);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.ReadOnly = true;
-            this.SurnameTextBox.Size = new System.Drawing.Size(318, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(317, 20);
             this.SurnameTextBox.TabIndex = 2;
             // 
             // NameTextBox
@@ -110,11 +110,11 @@
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.NameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.NameTextBox.Location = new System.Drawing.Point(67, 34);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
-            this.NameTextBox.Size = new System.Drawing.Size(318, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(317, 20);
             this.NameTextBox.TabIndex = 3;
             // 
             // PhoneTextBox
@@ -122,11 +122,11 @@
             this.PhoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PhoneTextBox.Location = new System.Drawing.Point(67, 87);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(318, 20);
+            this.PhoneTextBox.Size = new System.Drawing.Size(317, 20);
             this.PhoneTextBox.TabIndex = 5;
             // 
             // EmailTextBox
@@ -134,11 +134,11 @@
             this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EmailTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.EmailTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.EmailTextBox.Location = new System.Drawing.Point(67, 113);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.ReadOnly = true;
-            this.EmailTextBox.Size = new System.Drawing.Size(318, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(317, 20);
             this.EmailTextBox.TabIndex = 6;
             // 
             // VkTextBox
@@ -146,11 +146,11 @@
             this.VkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.VkTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.VkTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.VkTextBox.Location = new System.Drawing.Point(67, 139);
             this.VkTextBox.Name = "VkTextBox";
             this.VkTextBox.ReadOnly = true;
-            this.VkTextBox.Size = new System.Drawing.Size(318, 20);
+            this.VkTextBox.Size = new System.Drawing.Size(317, 20);
             this.VkTextBox.TabIndex = 7;
             // 
             // BirthdayDateTimePicker
@@ -162,9 +162,9 @@
             this.BirthdayDateTimePicker.Enabled = false;
             this.BirthdayDateTimePicker.Location = new System.Drawing.Point(67, 60);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
-            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(162, 20);
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(161, 20);
             this.BirthdayDateTimePicker.TabIndex = 4;
-            this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
+            this.BirthdayDateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -187,7 +187,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 66);
+            this.label4.Location = new System.Drawing.Point(7, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 10;
@@ -261,6 +261,7 @@
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
             this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteButton.FlatAppearance.BorderSize = 0;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Location = new System.Drawing.Point(70, 317);
@@ -275,6 +276,7 @@
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
             this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EditButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EditButton.FlatAppearance.BorderSize = 0;
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Location = new System.Drawing.Point(33, 317);
@@ -289,6 +291,7 @@
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
             this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.AddButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -315,13 +318,15 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.BirthdayEnum);
             this.panel1.Controls.Add(this.Birthday);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(6, 245);
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(6, 233);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 101);
+            this.panel1.Size = new System.Drawing.Size(379, 106);
             this.panel1.TabIndex = 15;
             // 
             // BirthdayEnum
@@ -337,17 +342,17 @@
             this.Birthday.AutoSize = true;
             this.Birthday.Location = new System.Drawing.Point(102, 12);
             this.Birthday.Name = "Birthday";
-            this.Birthday.Size = new System.Drawing.Size(132, 13);
+            this.Birthday.Size = new System.Drawing.Size(120, 13);
             this.Birthday.TabIndex = 1;
-            this.Birthday.Text = "Сегодня день рождения:";
+            this.Birthday.Text = "Today is the birthday of:";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 8);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(81, 91);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -363,9 +368,9 @@
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "Exit";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitStripMenu_Click);
             // 
             // EditToolStripMenuItem
             // 
@@ -376,27 +381,28 @@
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "Edit";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // AddContactToolStripMenuItem
             // 
             this.AddContactToolStripMenuItem.Name = "AddContactToolStripMenuItem";
             this.AddContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.AddContactToolStripMenuItem.Text = "Add Contact";
-            this.AddContactToolStripMenuItem.Click += new System.EventHandler(this.AddContactToolStripMenuItem_Click);
+            this.AddContactToolStripMenuItem.Click += new System.EventHandler(this.AddContactStripMenu_Click);
             // 
             // EditContactToolStripMenuItem
             // 
             this.EditContactToolStripMenuItem.Name = "EditContactToolStripMenuItem";
             this.EditContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.EditContactToolStripMenuItem.Text = "Edit Contact";
-            this.EditContactToolStripMenuItem.Click += new System.EventHandler(this.EditContactToolStripMenuItem_Click);
+            this.EditContactToolStripMenuItem.Click += new System.EventHandler(this.EditContactStripMenu_Click);
             // 
             // RemoveContactToolStripMenuItem
             // 
             this.RemoveContactToolStripMenuItem.Name = "RemoveContactToolStripMenuItem";
             this.RemoveContactToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.RemoveContactToolStripMenuItem.Text = "Remove Contact";
-            this.RemoveContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactToolStripMenuItem_Click);
+            this.RemoveContactToolStripMenuItem.Click += new System.EventHandler(this.RemoveContactStripMenu_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -411,10 +417,11 @@
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             this.AboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.AboutToolStripMenuItem.Text = "About";
-            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutStripMenu_Click);
             // 
             // MenuStrip1
             // 
+            this.MenuStrip1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.MenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FindToolStripMenuItem,
@@ -433,14 +440,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(624, 371);
             this.Controls.Add(this.MenuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(638, 405);
+            this.MinimumSize = new System.Drawing.Size(638, 404);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ContactsApp";
+            this.Text = "ContactsApp ";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -476,7 +484,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox ContactsListBox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label BirthdayEnum;
         private System.Windows.Forms.Label Birthday;
         private System.Windows.Forms.ToolStripMenuItem FindToolStripMenuItem;
@@ -491,6 +498,7 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

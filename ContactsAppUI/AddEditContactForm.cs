@@ -21,12 +21,12 @@ namespace ContactsAppUI
         private string _textException;
 
         //Флаг, в котором хранится верно ли заполнено поле Surname.
-        private bool buttonOKisAvailableToClick_Surname = false;
-        private bool buttonOKisAvailableToClick_Name = false;
-        private bool buttonOKisAvailableToClick_Birthday = false;
-        private bool buttonOKisAvailableToClick_Phone = false;
-        private bool buttonOKisAvailableToClick_Email = false;
-        private bool buttonOKisAvailableToClick_IdVk = false;
+        private bool buttonOK_Surname = false;
+        private bool buttonOK_Name = false;
+        private bool buttonOK_Birthday = false;
+        private bool buttonOK_Phone = false;
+        private bool buttonOK_Email = false;
+        private bool buttonOK_IdVk = false;
 
         //Метод, устанавливающий и возвращающий данные о контакте.
         public Contact Contact
@@ -51,16 +51,16 @@ namespace ContactsAppUI
             InitializeComponent();
         }
 
-        
+
         /// <summary>
         /// Запись в DialogResult "OK" при нажатии "ОК".
         /// </summary>
         private void OkButton_Click(object sender, EventArgs e)
         {
             //Если все поля заполнены верно, то разрешаем нажатие кнопки ОК.
-            if (buttonOKisAvailableToClick_Surname && buttonOKisAvailableToClick_Name &&
-                buttonOKisAvailableToClick_Birthday && buttonOKisAvailableToClick_Phone &&
-                buttonOKisAvailableToClick_Email && buttonOKisAvailableToClick_IdVk == true) 
+            if (buttonOK_Surname && buttonOK_Name &&
+                buttonOK_Birthday && buttonOK_Phone &&
+                buttonOK_Email && buttonOK_IdVk == true)
             {
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -70,10 +70,10 @@ namespace ContactsAppUI
             else
             {
                 OkButton.Enabled = false;
-                ToolTip okToolTip =  new ToolTip();
-
-                okToolTip.Show("Заполните форму корректными значениями, чтобы добавить контакт.", OkButton,
-                    (Point) (SurnameTextBox.Size + new Size(-500, 10)), 5000);
+                ToolTip okToolTip = new ToolTip();
+                
+                okToolTip.Show("Fill out the form with the correct values ​​to add a contact.", OkButton,
+                    (Point)(SurnameTextBox.Size + new Size(-500, 10)), 5000);
 
 
                 //Разрешаем кнопке реагировать на нажатия.
@@ -103,7 +103,7 @@ namespace ContactsAppUI
                 _сontact.Surname = SurnameTextBox.Text;
 
                 //Разрешаем нажатие кнопки Ок из TextBox surname.
-                buttonOKisAvailableToClick_Surname = true;
+                buttonOK_Surname = true;
             }
             catch (Exception exception)
             {
@@ -111,7 +111,7 @@ namespace ContactsAppUI
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                buttonOKisAvailableToClick_Surname = false;
+                buttonOK_Surname = false;
 
             }
 
@@ -134,27 +134,27 @@ namespace ContactsAppUI
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             int countException = 0;
-            ToolTip nameToolTip= new ToolTip();
+            ToolTip nameToolTip = new ToolTip();
 
             try
             {
                 _сontact.Name = NameTextBox.Text;
 
                 //Разрешаем нажатие кнопки Ок из TextBox name.
-                buttonOKisAvailableToClick_Name = true;
+                buttonOK_Name = true;
             }
             catch (Exception exception)
             {
                 _textException = exception.Message;
                 countException++;
-                buttonOKisAvailableToClick_Name = false;
+                buttonOK_Name = false;
             }
 
             //Если произошла ошибка.
             if (countException != 0)
             {
                 NameTextBox.BackColor = Color.LightSalmon;
-                nameToolTip.Show(_textException, NameTextBox, 
+                nameToolTip.Show(_textException, NameTextBox,
                     (Point)(NameTextBox.Size + new Size(-400, 10)), 5000);
             }
             else
@@ -176,7 +176,7 @@ namespace ContactsAppUI
                 _сontact.DateOfBirth = BirthdayTimePicker.Value;
 
                 //Разрешаем нажатие кнопки Ок из TextBox BirthdaytimePicker.
-                buttonOKisAvailableToClick_Birthday = true;
+                buttonOK_Birthday = true;
             }
             catch (Exception exception)
             {
@@ -184,7 +184,7 @@ namespace ContactsAppUI
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                buttonOKisAvailableToClick_Birthday = false;
+                buttonOK_Birthday = false;
             }
 
             //Если произошла ошибка.
@@ -216,16 +216,16 @@ namespace ContactsAppUI
                     _сontact.phoneNumber.Number = Convert.ToInt64(PhoneTextBox.Text);
 
                     //Разрешаем нажатие кнопки Ок из TextBox phone.
-                    buttonOKisAvailableToClick_Phone = true;
+                    buttonOK_Phone = true;
                 }
                 else
                 {
                     countException++;
-                    phoneToolTip.Show("Вы ввели пустую строку.Повторите ввод.", PhoneTextBox,
-                        (Point) (PhoneTextBox.Size + new Size(-400, 10)), 5000);
+                    phoneToolTip.Show("You entered an empty bar, please re-enter.", PhoneTextBox,
+                        (Point)(PhoneTextBox.Size + new Size(-400, 10)), 5000);
 
                     //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                    buttonOKisAvailableToClick_Phone = false;
+                    buttonOK_Phone = false;
                 }
             }
 
@@ -235,7 +235,7 @@ namespace ContactsAppUI
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                buttonOKisAvailableToClick_Phone = false;
+                buttonOK_Phone = false;
             }
 
             //Если произошла ошибка.
@@ -264,7 +264,7 @@ namespace ContactsAppUI
                 _сontact.Email = EmailTextBox.Text;
 
                 //Разрешаем нажатие кнопки Ок из TextBox email.
-                buttonOKisAvailableToClick_Email = true;
+                buttonOK_Email = true;
             }
 
             catch (Exception exception)
@@ -273,7 +273,7 @@ namespace ContactsAppUI
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                buttonOKisAvailableToClick_Email = false;
+                buttonOK_Email = false;
             }
 
             //Если произошла ошибка.
@@ -302,7 +302,7 @@ namespace ContactsAppUI
                 _сontact.IdVk = IdVkTextBox.Text;
 
                 //Разрешаем нажатие кнопки Ок из TextBox Id Vk.
-                buttonOKisAvailableToClick_IdVk = true;
+                buttonOK_IdVk = true;
             }
 
             catch (Exception exception)
@@ -311,7 +311,7 @@ namespace ContactsAppUI
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
-                buttonOKisAvailableToClick_IdVk = false;
+                buttonOK_IdVk = false;
             }
 
             //Если произошла ошибка.
@@ -351,11 +351,11 @@ namespace ContactsAppUI
         private void SurnameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Проверка на Backspace, позволяет очищать строку.
-            if(e.KeyChar == (char)Keys.Back)
+            if (e.KeyChar == (char)Keys.Back)
                 return;
 
             //Проверка на ввод, пропускающая только символы и дефис.
-            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == '-')) 
+            if (!char.IsLetter(e.KeyChar) && !(e.KeyChar == '-'))
                 e.Handled = true;
         }
 
@@ -381,7 +381,7 @@ namespace ContactsAppUI
             int i = 0;
 
             //Проверка на Backspace, позволяет очищать строку.
-            if (e.KeyChar == (char) Keys.Back)
+            if (e.KeyChar == (char)Keys.Back)
                 return;
 
             //Проверка на ввод, пропускающая только цифры.
@@ -393,6 +393,11 @@ namespace ContactsAppUI
 
             //Ограничение на ввод 11 символов.
             PhoneTextBox.MaxLength = 11;
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }

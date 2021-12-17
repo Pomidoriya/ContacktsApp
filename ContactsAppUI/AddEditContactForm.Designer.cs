@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditContactForm));
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelAndCloseButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // SurnameTextBox
@@ -50,6 +52,7 @@
             this.SurnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SurnameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SurnameTextBox.Location = new System.Drawing.Point(80, 12);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(379, 20);
@@ -62,6 +65,7 @@
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.NameTextBox.Location = new System.Drawing.Point(80, 39);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(379, 20);
@@ -74,6 +78,7 @@
             this.PhoneTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PhoneTextBox.Location = new System.Drawing.Point(80, 92);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(379, 20);
@@ -90,7 +95,7 @@
             this.BirthdayTimePicker.Name = "BirthdayTimePicker";
             this.BirthdayTimePicker.Size = new System.Drawing.Size(142, 20);
             this.BirthdayTimePicker.TabIndex = 2;
-            this.BirthdayTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 1, 0, 0);
+            this.BirthdayTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.BirthdayTimePicker.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // EmailTextBox
@@ -98,6 +103,7 @@
             this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EmailTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.EmailTextBox.Location = new System.Drawing.Point(80, 119);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(379, 20);
@@ -109,6 +115,7 @@
             this.IdVkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.IdVkTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.IdVkTextBox.Location = new System.Drawing.Point(80, 146);
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.Size = new System.Drawing.Size(379, 20);
@@ -180,21 +187,26 @@
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // CancelButton
+            // CancelAndCloseButton
             // 
             this.CancelAndCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelAndCloseButton.Location = new System.Drawing.Point(384, 176);
-            this.CancelAndCloseButton.Name = "CancelButton";
+            this.CancelAndCloseButton.Name = "CancelAndCloseButton";
             this.CancelAndCloseButton.Size = new System.Drawing.Size(75, 33);
             this.CancelAndCloseButton.TabIndex = 13;
             this.CancelAndCloseButton.Text = "Cancel";
             this.CancelAndCloseButton.UseVisualStyleBackColor = true;
             this.CancelAndCloseButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // AddEditContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(479, 221);
             this.Controls.Add(this.CancelAndCloseButton);
             this.Controls.Add(this.OkButton);
@@ -214,7 +226,6 @@
             this.MinimumSize = new System.Drawing.Size(495, 260);
             this.Name = "AddEditContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddEditContact";
             this.Load += new System.EventHandler(this.AddEditContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -237,5 +248,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelAndCloseButton;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

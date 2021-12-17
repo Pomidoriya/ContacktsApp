@@ -21,23 +21,22 @@ namespace ContactsAppUI
             //Выводим пока количество записей в файле не равно количеству записей в ListBox.
             while (countContacts != _project._contactsList.Count)
             {
-                ContactsListBox.Items.Add(_project._contactsList[countContacts].Surname+ " " 
-                    + _project._contactsList[countContacts].Name);
+                ContactsListBox.Items.Add(_project._contactsList[countContacts].Surname);
                 countContacts++;
             }
 
+            //Выводим список именниников
            Project birthContact = Project.Birthday(_project, DateTime.Today);
             for (int i = 0; i < birthContact._contactsList.Count; i++)
             {
-                BirthdayEnum.Text = BirthdayEnum.Text +"• "+ birthContact._contactsList[i].Surname +
-                    " " + birthContact._contactsList[i].Name +  "\n";
+                BirthdayEnum.Text = BirthdayEnum.Text +"• "+birthContact._contactsList[i].Surname+"\n" ;
             }
 
             //Подсказка для кнопок Add, Remove, Edit
             ToolTip addRemoveEdiToolTip = new ToolTip();
-            addRemoveEdiToolTip.SetToolTip(AddButton, "Нажмите для добавления контакта в список.");
-            addRemoveEdiToolTip.SetToolTip(DeleteButton, "Нажмите для удаления контакта из списка.");
-            addRemoveEdiToolTip.SetToolTip(EditButton, "Нажмите для редактирования контакта.");
+            addRemoveEdiToolTip.SetToolTip(AddButton, "Click to add a contact to the list.");
+            addRemoveEdiToolTip.SetToolTip(DeleteButton, "Click to remove a contact from the list.");
+            addRemoveEdiToolTip.SetToolTip(EditButton, "Click to edit contact.");
         }
         
         /// <summary>
@@ -65,8 +64,7 @@ namespace ContactsAppUI
 
                 for (int j = 0; j != _project._contactsList.Count; j++)
                 {
-                    ContactsListBox.Items.Add(_project._contactsList[j].Surname +
-                    " " + _project._contactsList[j].Name);
+                    ContactsListBox.Items.Add(_project._contactsList[j].Surname);
                 }
 
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
@@ -82,7 +80,7 @@ namespace ContactsAppUI
 
             if (index == -1)
             {
-                MessageBox.Show("Выберите запись для удаления.", "Удалить");
+                MessageBox.Show("Select the entry to delete.", "Delete");
             }
 
             //Если список не пуст.
@@ -91,9 +89,9 @@ namespace ContactsAppUI
                 if (index >= 0)
                 {
                     string removeThisContact =
-                        "Вы точно хотите удалить контакт: " + SurnameTextBox.Text + " " +NameTextBox.Text + "?";
+                        "You realy want to delete a contact: " + SurnameTextBox.Text + "?";
 
-                    var result = MessageBox.Show(removeThisContact, "Удалить", MessageBoxButtons.OKCancel);
+                    var result = MessageBox.Show(removeThisContact, "Delete", MessageBoxButtons.OKCancel);
                     if (result == DialogResult.OK)
                     {
                         _project._contactsList.RemoveAt(index);
@@ -106,7 +104,7 @@ namespace ContactsAppUI
             {
                 if (index >= 0)
                 {
-                    MessageBox.Show("Выберите запись для удаления.", "Удалить");
+                    MessageBox.Show("Select the entry to delete.", "Delete");
                 }
             }
         }
@@ -120,7 +118,7 @@ namespace ContactsAppUI
 
             if (index == -1)
             {
-                MessageBox.Show("Выберите запись для редактирования.", "Редактировать");
+                MessageBox.Show("Select the entry to edit.", "Edit");
             }
 
             //Если список не пуст.
@@ -177,8 +175,7 @@ namespace ContactsAppUI
                             {
                                 for (int i = 0; i < _sortProject._contactsList.Count; i++)
                                 {
-                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname +
-                                    " "+ _sortProject._contactsList[i].Name);
+                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
                                 }
                             }
 
@@ -200,8 +197,7 @@ namespace ContactsAppUI
 
                             for (int j = 0; j != _project._contactsList.Count; j++)
                             {
-                                ContactsListBox.Items.Add(_project._contactsList[j].Surname +
-                                 " "+_project._contactsList[j].Name);
+                                ContactsListBox.Items.Add(_project._contactsList[j].Surname );
                             }
                         }
 
@@ -213,7 +209,7 @@ namespace ContactsAppUI
                 {
                     if (index >= 0)
                     {
-                        MessageBox.Show("Выберите запись для редактирования.", "Редактировать");
+                        MessageBox.Show("Select the entry to edit.", "Edit");
                     }
                 }
             }
@@ -297,7 +293,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Добавление контакта по клику в выпадающем сверху меню из Edit.
         /// </summary>
-        private void AddContactToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddContactStripMenu_Click(object sender, EventArgs e)
         {
             AddContact();
         }
@@ -305,7 +301,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Выпадение формы About, при клике в верхнем меню на About.
         /// </summary>
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutStripMenu_Click(object sender, EventArgs e)
         {
             var newForm = new AboutForm();
             newForm.Show();
@@ -314,7 +310,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Редактирование контакта по клику в выпадающем сверху меню из Edit.
         /// </summary>
-        private void EditContactToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditContactStripMenu_Click(object sender, EventArgs e)
         {
             EditContact();
         }
@@ -322,7 +318,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Удаление контакта по клику в выпадающем сверху меню из Edit.
         /// </summary>
-        private void RemoveContactToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveContactStripMenu_Click(object sender, EventArgs e)
         {
             RemoveContact();
         }
@@ -330,7 +326,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Закрывает главное окно по клику в выпадающем сверху меню на Exit.
         /// </summary>
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitStripMenu_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -349,8 +345,7 @@ namespace ContactsAppUI
                 }
                 for (int i = 0; i != _project._contactsList.Count; i++)
                 {
-                    ContactsListBox.Items.Add(_project._contactsList[i].Surname +
-                    " " + _project._contactsList[i].Name);
+                    ContactsListBox.Items.Add(_project._contactsList[i].Surname);
                 }
             }
 
@@ -373,8 +368,7 @@ namespace ContactsAppUI
                     }
                     for (int i = 0; i != _sortProject._contactsList.Count; i++)
                     {
-                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname +
-                    " " + _sortProject._contactsList[i].Name);
+                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
                     }
                 }
             }
@@ -414,6 +408,11 @@ namespace ContactsAppUI
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             RemoveContact();
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
