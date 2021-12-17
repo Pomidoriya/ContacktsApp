@@ -72,7 +72,8 @@ namespace ContactsAppUI
                 OkButton.Enabled = false;
                 ToolTip okToolTip = new ToolTip();
                 
-                okToolTip.Show("Fill out the form with the correct values ​​to add a contact.", OkButton,
+                okToolTip.Show("Fill out the form with the correct values ​​to add a contact." +
+                    "\n• Point the information icon, if have a questions!", OkButton,
                     (Point)(SurnameTextBox.Size + new Size(-500, 10)), 5000);
 
 
@@ -105,9 +106,9 @@ namespace ContactsAppUI
                 //Разрешаем нажатие кнопки Ок из TextBox surname.
                 buttonOK_Surname = true;
             }
-            catch (Exception exception)
+            catch 
             {
-                _textException = exception.Message;
+               // _textException = exception.Message;
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
@@ -143,9 +144,9 @@ namespace ContactsAppUI
                 //Разрешаем нажатие кнопки Ок из TextBox name.
                 buttonOK_Name = true;
             }
-            catch (Exception exception)
+            catch 
             {
-                _textException = exception.Message;
+               // _textException = exception.Message;
                 countException++;
                 buttonOK_Name = false;
             }
@@ -178,9 +179,9 @@ namespace ContactsAppUI
                 //Разрешаем нажатие кнопки Ок из TextBox BirthdaytimePicker.
                 buttonOK_Birthday = true;
             }
-            catch (Exception exception)
+            catch 
             {
-                _textException = exception.Message;
+                //_textException = exception.Message;
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
@@ -229,9 +230,9 @@ namespace ContactsAppUI
                 }
             }
 
-            catch (ArgumentException exception)
+            catch 
             {
-                _textException = exception.Message;
+               // _textException = exception.Message;
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
@@ -289,10 +290,10 @@ namespace ContactsAppUI
             }
         }
 
-        /// <summary>
-        /// Считывает Id vk контакта с TextBox
-        /// </summary>
-        private void IdVkTextBox_TextChanged(object sender, EventArgs e)
+/// <summary>
+/// Считывает Id vk контакта с TextBox
+/// </summary>
+private void IdVkTextBox_TextChanged(object sender, EventArgs e)
         {
             int countException = 0;
             ToolTip idVkToolTip = new ToolTip();
@@ -305,9 +306,9 @@ namespace ContactsAppUI
                 buttonOK_IdVk = true;
             }
 
-            catch (Exception exception)
+            catch 
             {
-                _textException = exception.Message;
+               // _textException = exception.Message;
                 countException++;
 
                 //Переключаем флаг в false и запрещаем нажимать кнопку ОК.
@@ -393,11 +394,6 @@ namespace ContactsAppUI
 
             //Ограничение на ввод 11 символов.
             PhoneTextBox.MaxLength = 11;
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
         }
     }
 }

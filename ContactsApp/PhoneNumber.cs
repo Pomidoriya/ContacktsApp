@@ -10,7 +10,7 @@ namespace ContactsApp
     {
         private long _number;
         /// <summary>
-        /// Метод, устанавливающий и возвращающий ID Vk контакта.
+        /// Метод, устанавливающий и возвращающий номер контакта.
         /// </summary>
         public long Number
         {
@@ -20,19 +20,21 @@ namespace ContactsApp
                 //Проверка на начало номера с 8.
                 if (value.ToString()[0] != '8')
                 {
-                    throw new ArgumentException("Введите номер телефона, начинающийся с 8.");
+                    throw new ArgumentException("Enter a phone number starting with 8.");
                 }
 
                 //Проверка на количество цифр.
                 if (value > 99999999999)
                 {
-                    throw new ArgumentException("Вы ввели некорректное значение, введите номер, состоящий из 11 цифр!");
+                    throw new ArgumentException("You have entered an incorrect value," +
+                        " please enter a number consisting of 11 digits!");
                 }
 
                 //Проверка на количество цифр
                 if (value < 10000000000)
                 {
-                    throw new ArgumentException("Вы ввели некорректное значение, введите номер, состоящий из 11 цифр!");
+                    throw new ArgumentException("You have entered an incorrect value," +
+                        " please enter a number consisting of 11 digits!");
                 }
 
                 else
