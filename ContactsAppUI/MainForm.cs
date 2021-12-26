@@ -68,6 +68,7 @@ namespace ContactsAppUI
                 }
 
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
+               // ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
             }
         }
 
