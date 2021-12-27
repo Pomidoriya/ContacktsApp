@@ -68,7 +68,7 @@ namespace ContactsAppUI
                 }
 
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
-               // ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
+                //ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
             }
         }
 
@@ -204,6 +204,7 @@ namespace ContactsAppUI
 
                         //Выполняем сериализацию данных.
                         ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
+                       // ContactsListBox.SelectedIndex = index;
                     }
                 }
                 else

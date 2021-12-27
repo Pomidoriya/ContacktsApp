@@ -21,7 +21,7 @@ namespace ContactsApp
         /// <param name="project">Список, который нужно отсортировать</param>
         /// <returns>Отсортированный список</returns>
         
-        public static Project Sort(Project project) //TODO: сделать встроенную сортировку
+        public static Project Sort(Project project) 
         {
             Project sortedProject = new Project();
            sortedProject._contactsList.Add(project._contactsList[0]);
