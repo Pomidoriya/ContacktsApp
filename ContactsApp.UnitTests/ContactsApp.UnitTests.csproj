@@ -61,10 +61,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ContactsAppUI\ContactsAppUI.csproj">
-      <Project>{74b4ad61-8bb9-4753-a97d-f0c63d368c29}</Project>
-      <Name>ContactsAppUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ContactsApp\ContactsApp.csproj">
       <Project>{90ca5981-888a-4230-a6c5-96f72e75d95e}</Project>
       <Name>ContactsApp</Name>

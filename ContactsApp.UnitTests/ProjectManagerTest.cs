@@ -32,7 +32,7 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Позитивный тест сериализации")]
         public void TestSerialization_CorrectValue()
         {
-            _project.contactsList.Add(_contact);
+            _project._contactsList.Add(_contact);
 
             var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + 
                 "/ContactsApp" + "/ContactsAppTest" + "/ContactAppTestSerialize.notes";
@@ -52,7 +52,7 @@ namespace ContactsApp.UnitTests
         public void TestDeserilization_CorrectValue()
         {
             Project project = new Project();
-            _project.contactsList.Add(_contact);
+            _project._contactsList.Add(_contact);
 
             var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
                 "/ContactsApp" + "/ContactsAppTest" + "/ContactAppTestDeserialize.notes";
@@ -61,23 +61,23 @@ namespace ContactsApp.UnitTests
                         
             project = ProjectManager.LoadFromFile(fileReference);
                        
-            Assert.AreEqual(_project.contactsList.Count, project.contactsList.Count, 
+            Assert.AreEqual(_project._contactsList.Count, project._contactsList.Count, 
                 "Десериализация работает неправильно.");
-            for (int index = 0; index < _project.contactsList.Count; index++)
+            for (int index = 0; index < _project._contactsList.Count; index++)
             {
-                Assert.AreEqual(_project.contactsList[index].Surname, project.contactsList[index].Surname,
+                Assert.AreEqual(_project._contactsList[index].Surname, project._contactsList[index].Surname,
                     "Некорректная десериализация фамилии");
-                Assert.AreEqual(_project.contactsList[index].Name, project.contactsList[index].Name,
+                Assert.AreEqual(_project._contactsList[index].Name, project._contactsList[index].Name,
                     "Некорректная десериализация имени");
-                Assert.AreEqual(_project.contactsList[index].Email, project.contactsList[index].Email,
+                Assert.AreEqual(_project._contactsList[index].Email, project._contactsList[index].Email,
                     "Некорректная десериализация е-мейла");
-                Assert.AreEqual(_project.contactsList[index].IdVk, project.contactsList[index].IdVk,
+                Assert.AreEqual(_project._contactsList[index].IdVk, project._contactsList[index].IdVk,
                     "Некорректная десериализация id vk");
-                Assert.AreEqual(_project.contactsList[index].phoneNumber.Number, 
-                    project.contactsList[index].phoneNumber.Number,
+                Assert.AreEqual(_project._contactsList[index].phoneNumber.Number, 
+                    project._contactsList[index].phoneNumber.Number,
                     "Некорректная десериализация номера телефона");
-                Assert.AreEqual(_project.contactsList[index].DateOfBirth, 
-                    project.contactsList[index].DateOfBirth,
+                Assert.AreEqual(_project._contactsList[index].DateOfBirth, 
+                    project._contactsList[index].DateOfBirth,
                     "Некорректная десериализация фамилии");
             }
         }

@@ -25,10 +25,7 @@ namespace ContactsApp
         {
             Project sortedProject = new Project();
            sortedProject._contactsList.Add(project._contactsList[0]);
-            /*
-             var unsortedContacts = project._contactsList;
-            var sortedContacts = unsortedContacts.OrderBy(contact => contact.Surname).ToList(); //встроенная сортировка
-            */
+       
              for (int i = 1; i < project._contactsList.Count; i++)
              {
 
