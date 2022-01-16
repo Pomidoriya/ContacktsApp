@@ -26,10 +26,10 @@ namespace ContactsAppUI
             }
 
             //Выводим список именниников
-           Project birthContact = Project.Birthday(_project, DateTime.Today);
+            Project birthContact = Project.Birthday(_project, DateTime.Today);
             for (int i = 0; i < birthContact._contactsList.Count; i++)
             {
-                BirthdayEnum.Text = BirthdayEnum.Text +"• "+birthContact._contactsList[i].Surname+"\n" ;
+                BirthdayEnum.Text = BirthdayEnum.Text + "• " + birthContact._contactsList[i].Surname + "\n";
             }
 
             //Подсказка для кнопок Add, Remove, Edit
@@ -38,7 +38,7 @@ namespace ContactsAppUI
             addRemoveEdiToolTip.SetToolTip(DeleteButton, "Click to remove a contact from the list.");
             addRemoveEdiToolTip.SetToolTip(EditButton, "Click to edit contact.");
         }
-        
+
         /// <summary>
         /// Функция добавления контакта.
         /// </summary>
@@ -54,7 +54,7 @@ namespace ContactsAppUI
             {
                 var contact = newForm.Contact;
                 _project._contactsList.Add(contact);
-               
+
                 for (int i = 0; i != _project._contactsList.Count - 1; i++)
                 {
                     ContactsListBox.Items.RemoveAt(0);
@@ -145,8 +145,8 @@ namespace ContactsAppUI
                             }
                         }
                     }
-                    
-                    Contact newCloneContact = (Contact) contactOfIndex.Clone();
+
+                    Contact newCloneContact = (Contact)contactOfIndex.Clone();
                     var newForm = new AddEditContactForm();
                     newForm.Contact = newCloneContact;
 
@@ -171,7 +171,7 @@ namespace ContactsAppUI
                             }
 
                             _sortProject = Project.Sort(_project, FindTextBox.Text);
-                            
+
                             if (_sortProject != null && _sortProject._contactsList.Count != 0)
                             {
                                 for (int i = 0; i < _sortProject._contactsList.Count; i++)
@@ -198,13 +198,13 @@ namespace ContactsAppUI
 
                             for (int j = 0; j != _project._contactsList.Count; j++)
                             {
-                                ContactsListBox.Items.Add(_project._contactsList[j].Surname );
+                                ContactsListBox.Items.Add(_project._contactsList[j].Surname);
                             }
                         }
 
                         //Выполняем сериализацию данных.
                         ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
-                       // ContactsListBox.SelectedIndex = index;
+                        // ContactsListBox.SelectedIndex = index;
                     }
                 }
                 else
@@ -246,9 +246,9 @@ namespace ContactsAppUI
         /// </summary>
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedIndex =  ContactsListBox.SelectedIndex;
-            
-            if(selectedIndex == -1)
+            var selectedIndex = ContactsListBox.SelectedIndex;
+
+            if (selectedIndex == -1)
             {
                 SurnameTextBox.Text = null;
                 NameTextBox.Text = null;
@@ -268,7 +268,7 @@ namespace ContactsAppUI
                         contact = _sortProject._contactsList[selectedIndex];
                     }
                     else
-                    { 
+                    {
                         contact = _project._contactsList[selectedIndex];
                     }
 
@@ -285,7 +285,7 @@ namespace ContactsAppUI
             {
                 SurnameTextBox.Text = null;
                 NameTextBox.Text = null;
-                BirthdayDateTimePicker.Value = new DateTime(1900,01,01);
+                BirthdayDateTimePicker.Value = new DateTime(1900, 01, 01);
                 PhoneTextBox.Text = null;
                 EmailTextBox.Text = null;
                 VkTextBox.Text = null;
@@ -316,7 +316,7 @@ namespace ContactsAppUI
         {
             EditContact();
         }
-        
+
         /// <summary>
         /// Удаление контакта по клику в выпадающем сверху меню из Edit.
         /// </summary>
@@ -387,16 +387,6 @@ namespace ContactsAppUI
             }
         }
 
-        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddContact();
@@ -410,11 +400,6 @@ namespace ContactsAppUI
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             RemoveContact();
-        }
-
-        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

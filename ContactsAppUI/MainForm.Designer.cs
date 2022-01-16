@@ -356,7 +356,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(81, 91);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            
             // 
             // FindToolStripMenuItem
             // 
@@ -382,7 +382,7 @@
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "Edit";
-            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
+            
             // 
             // AddContactToolStripMenuItem
             // 
@@ -434,7 +434,7 @@
             this.MenuStrip1.Size = new System.Drawing.Size(624, 24);
             this.MenuStrip1.TabIndex = 16;
             this.MenuStrip1.Text = "menuStrip1";
-            this.MenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
+          
             // 
             // MainForm
             // 
