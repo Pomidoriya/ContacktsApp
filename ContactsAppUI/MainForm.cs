@@ -341,7 +341,7 @@ namespace ContactsAppUI
             if (FindTextBox.Text == "")
             {
                 _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
-                while (ContactsListBox.Items.Count != 0)
+                if (ContactsListBox.Items.Count != 0)
                 {
                     ContactsListBox.Items.RemoveAt(0);
                 }
@@ -357,14 +357,14 @@ namespace ContactsAppUI
                 _sortProject = Project.Sort(_project, FindTextBox.Text);
                 if (_sortProject == null)
                 {
-                    while (ContactsListBox.Items.Count != 0)
+                    if (ContactsListBox.Items.Count != 0)
                     {
                         ContactsListBox.Items.RemoveAt(0);
                     }
                 }
                 else
                 {
-                    while (ContactsListBox.Items.Count != 0)
+                    if (ContactsListBox.Items.Count != 0)
                     {
                         ContactsListBox.Items.RemoveAt(0);
                     }
