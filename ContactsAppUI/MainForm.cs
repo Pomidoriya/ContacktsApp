@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -6,400 +7,330 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
-        //Создаем список контактов.
+        /// <summary>
+        /// Поле хранящее список контактов
+        /// </summary>
         private Project _project;
-        private Project _sortProject;
 
+        /// <summary>
+        /// Обновленный список контаков, удовлетворяющий условиям поиска
+        /// </summary>
+        private List<Contact> _findedContacts = new List<Contact>();
+
+        /// <summary>
+        /// Переменная хранящая путь 
+        /// </summary>
+        private string _defaultFilename = ProjectManager.DefaultFilename;
+
+        /// <summary>
+        /// Инициализирует все компоненты, загружает информацию по контактам 
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
-
-            //Выполняем десериализацию.
-            _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
-            int countContacts = 0;
-
-            //Выводим пока количество записей в файле не равно количеству записей в ListBox.
-            while (countContacts != _project._contactsList.Count)
-            {
-                ContactsListBox.Items.Add(_project._contactsList[countContacts].Surname);
-                countContacts++;
-            }
-
-            //Выводим список именниников
-            Project birthContact = Project.Birthday(_project, DateTime.Today);
-            for (int i = 0; i < birthContact._contactsList.Count; i++)
-            {
-                BirthdayEnum.Text = BirthdayEnum.Text + "• " + birthContact._contactsList[i].Surname + "\n";
-            }
-
-            //Подсказка для кнопок Add, Remove, Edit
-            ToolTip addRemoveEdiToolTip = new ToolTip();
-            addRemoveEdiToolTip.SetToolTip(AddButton, "Click to add a contact to the list.");
-            addRemoveEdiToolTip.SetToolTip(DeleteButton, "Click to remove a contact from the list.");
-            addRemoveEdiToolTip.SetToolTip(EditButton, "Click to edit contact.");
+            _project = ProjectManager.LoadFromFile(_defaultFilename, "contact.json");
+            _project.SortList();
+            CheckBirthdayToday();
         }
 
         /// <summary>
-        /// Функция добавления контакта.
+        /// Формирует список именинников
+        /// </summary>
+        private void CheckBirthdayToday()
+        {
+            var listBirthday = _project.GetListBirthday();
+            if (listBirthday != "")
+            {
+                BirthdayPanel.Visible = true;
+                BirthDateLabel.Text = "Today is the birthday of: ";
+                var birthdayLabelText = listBirthday;
+                BirthDateLabel.Text += birthdayLabelText;
+            }
+            else
+            {
+                BirthdayPanel.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Отображает информацию о контактах в полях формы
+        /// </summary>
+        private void IsCorrectContent()
+        {
+            var selectedIndex = ContactsListBox.SelectedIndex;
+            if (selectedIndex != -1)
+            {
+                var contact = FindTextBox.Text == String.Empty
+                    ? _project.Contacts[selectedIndex]
+                    : _findedContacts[selectedIndex];
+
+                NameTextBox.Text = contact.Name;
+                SurnameTextBox.Text = contact.Surname;
+                DateBirthDay.Value = contact.BirthDate;
+                EmailTextBox.Text = contact.Email;
+                IdVkTextBox.Text = contact.IdVK;
+                PhoneTextBox.Text = contact.PhoneNumber.Number.ToString();
+            }
+            else
+            {
+                NameTextBox.Text = "";
+                SurnameTextBox.Text = "";
+                DateBirthDay.Value = DateTime.Today;
+                EmailTextBox.Text = "";
+                IdVkTextBox.Text = "";
+                PhoneTextBox.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// Корректирует данные в ListBox и полях формы
+        /// </summary>
+        private void UpdateData()
+        {
+            _project.SortList();
+            ClearData();
+            foreach (var t in _project.Contacts)
+            {
+                ContactsListBox.Items.Add(t.Surname);
+                _findedContacts.Add(t);
+            }
+            IsCorrectContent();
+            CheckBirthdayToday();
+            SaveToFile();
+        }
+
+        /// <summary>
+        /// Удаляет все элементы из ListBox и списка контактов, удовлетворяющих условиям поиска
+        /// </summary>
+        private void ClearData()
+        {
+            ContactsListBox.Items.Clear();
+            _findedContacts.Clear();
+        }
+
+        /// <summary>
+        /// Сохраняет данные в файл
+        /// </summary>
+        private void SaveToFile()
+        {
+            ProjectManager.SaveToFile(_project, _defaultFilename, "contact.json");
+        }
+
+        /// <summary>
+        /// Метод удаления контакта
+        /// </summary>
+        private void DeleteContact()
+        {
+            var selectedIndex = ContactsListBox.SelectedIndex;
+            var updatedIndex = _findedContacts[selectedIndex];
+            if (selectedIndex < 0)
+            {
+                return;
+            }
+            var result = MessageBox.Show("Are you sure you want to delete " +
+                                         updatedIndex.Surname +
+                                         " from your contact list?", "Delete contact",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result != DialogResult.OK)
+            {
+                return;
+            }
+            _project.Contacts.RemoveAt(_project.Contacts.IndexOf(updatedIndex));
+            ContactsListBox.Items.RemoveAt(selectedIndex);
+            IsCorrectContent();
+            CheckBirthdayToday();
+            SaveToFile();
+        }
+
+        /// <summary>
+        /// Метод добавления контакта 
         /// </summary>
         private void AddContact()
         {
-            var newForm = new AddEditContactForm();
-
-            //Создаем переменную, в которую помещаем результат взаимодействия пользователя с формой.
-            var resultOfDialog = newForm.ShowDialog();
-
-            //Если пользователь нажал ОК, то вносим исправленные данные.
-            if (resultOfDialog == DialogResult.OK)
+            if (FindTextBox.Text.Length != 0)
             {
-                var contact = newForm.Contact;
-                _project._contactsList.Add(contact);
-
-                for (int i = 0; i != _project._contactsList.Count - 1; i++)
-                {
-                    ContactsListBox.Items.RemoveAt(0);
-                }
-
-                _project = Project.Sort(_project);
-
-                for (int j = 0; j != _project._contactsList.Count; j++)
-                {
-                    ContactsListBox.Items.Add(_project._contactsList[j].Surname);
-                }
-
-                ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
-                //ContactsListBox.SelectedIndex = ContactsListBox.Items.Count - 1;
+                return;
             }
+            var form = new ContactForm();
+            form.ShowDialog();
+            if (form.Contact == null)
+            {
+                return;
+            }
+            _project.Contacts.Add(form.Contact);
+            UpdateData();
+            _project.SortList();
         }
 
         /// <summary>
-        /// Функция удаления контакта.
-        /// </summary>
-        private void RemoveContact()
-        {
-            var index = ContactsListBox.SelectedIndex;
-
-            if (index == -1)
-            {
-                MessageBox.Show("Select the entry to delete.", "Delete");
-            }
-
-            //Если список не пуст.
-            if (_project._contactsList.Count > 0)
-            {
-                if (index >= 0)
-                {
-                    string removeThisContact =
-                        "You realy want to delete a contact: " + SurnameTextBox.Text + "?";
-
-                    var result = MessageBox.Show(removeThisContact, "Delete", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.OK)
-                    {
-                        _project._contactsList.RemoveAt(index);
-                        ContactsListBox.Items.RemoveAt(index);
-                        ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
-                    }
-                }
-            }
-            else
-            {
-                if (index >= 0)
-                {
-                    MessageBox.Show("Select the entry to delete.", "Delete");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Функция, выполняющая редактирование данных.
+        /// Метод редактирования контакта 
         /// </summary>
         private void EditContact()
         {
-            var index = ContactsListBox.SelectedIndex;
-
-            if (index == -1)
-            {
-                MessageBox.Show("Select the entry to edit.", "Edit");
-            }
-
-            //Если список не пуст.
-            if (_project._contactsList.Count > 0)
-            {
-                if (index >= 0)
-                {
-                    var contactOfIndex = _project._contactsList[index];
-                    int sortIndex = 0;
-
-                    //Если сортированный список не пуст, то выбираем элемент из него
-                    if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
-                    {
-                        contactOfIndex = _sortProject._contactsList[index];
-                        sortIndex = index;
-
-                        for (int i = 0; i < _project._contactsList.Count; i++)
-                        {
-                            if (contactOfIndex == _project._contactsList[i])
-                            {
-                                index = i;
-                                break;
-                            }
-                        }
-                    }
-
-                    Contact newCloneContact = (Contact)contactOfIndex.Clone();
-                    var newForm = new AddEditContactForm();
-                    newForm.Contact = newCloneContact;
-
-                    //Создаем переменную, в которую помещаем результат взаимодействия пользователя с формой.
-                    var resultOfDialog = newForm.ShowDialog();
-
-                    //Если пользователь нажал ОК, то вносим исправленные данные.
-                    if (resultOfDialog == DialogResult.OK)
-                    {
-                        contactOfIndex = newForm.Contact;
-
-                        //Если введена подстрока.
-                        if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
-                        {
-                            _project._contactsList.RemoveAt(index);
-                            _sortProject._contactsList.RemoveAt(sortIndex);
-                            _project._contactsList.Insert(index, contactOfIndex);
-
-                            while (ContactsListBox.Items.Count != 0)
-                            {
-                                ContactsListBox.Items.RemoveAt(0);
-                            }
-
-                            _sortProject = Project.Sort(_project, FindTextBox.Text);
-
-                            if (_sortProject != null && _sortProject._contactsList.Count != 0)
-                            {
-                                for (int i = 0; i < _sortProject._contactsList.Count; i++)
-                                {
-                                    ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
-                                }
-                            }
-
-                            _project = Project.Sort(_project);
-                        }
-
-                        //Если подстрока не введена.
-                        else
-                        {
-                            _project._contactsList.RemoveAt(index);
-                            _project._contactsList.Insert(index, contactOfIndex);
-
-                            while (ContactsListBox.Items.Count != 0)
-                            {
-                                ContactsListBox.Items.RemoveAt(0);
-                            }
-
-                            _project = Project.Sort(_project);
-
-                            for (int j = 0; j != _project._contactsList.Count; j++)
-                            {
-                                ContactsListBox.Items.Add(_project._contactsList[j].Surname);
-                            }
-                        }
-
-                        //Выполняем сериализацию данных.
-                        ProjectManager.SaveToFile(_project, ProjectManager.DefaultFilePath);
-                        // ContactsListBox.SelectedIndex = index;
-                    }
-                }
-                else
-                {
-                    if (index >= 0)
-                    {
-                        MessageBox.Show("Select the entry to edit.", "Edit");
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Вызывает функцию для добавления контакта.
-        /// </summary>
-        private void AddContactButton_Click(object sender, EventArgs e)
-        {
-            AddContact();
-        }
-
-        /// <summary>
-        /// Вызывает функцию для редактирования контакта.
-        /// </summary>
-        private void EditContactButton_Click(object sender, EventArgs e)
-        {
-            EditContact();
-        }
-
-        /// <summary>
-        /// Вызывает функцию для удаления контакта.
-        /// </summary>
-        private void RemoveContactButton_Click(object sender, EventArgs e)
-        {
-            RemoveContact();
-        }
-
-        /// <summary>
-        /// Переключение между контактами списка и вывод выбранного контакта.
-        /// </summary>
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
             var selectedIndex = ContactsListBox.SelectedIndex;
-
-            if (selectedIndex == -1)
+            if (selectedIndex < 0)
             {
-                SurnameTextBox.Text = null;
-                NameTextBox.Text = null;
-                BirthdayDateTimePicker.Value = new DateTime(1900, 01, 01);
-                PhoneTextBox.Text = null;
-                EmailTextBox.Text = null;
-                VkTextBox.Text = null;
+                return;
             }
-
-            if (_project._contactsList.Count > 0)
+            var form = new ContactForm
             {
-                if (selectedIndex >= 0)
-                {
-                    Contact contact;
-                    if (_sortProject != null && _sortProject._contactsList.Count > 0 && FindTextBox.Text != "")
-                    {
-                        contact = _sortProject._contactsList[selectedIndex];
-                    }
-                    else
-                    {
-                        contact = _project._contactsList[selectedIndex];
-                    }
-
-                    //Заполняем правую часть главной формы данными выбранного элемента.
-                    SurnameTextBox.Text = contact.Surname;
-                    NameTextBox.Text = contact.Name;
-                    BirthdayDateTimePicker.Value = contact.DateOfBirth;
-                    PhoneTextBox.Text = Convert.ToString(contact.phoneNumber.Number);
-                    EmailTextBox.Text = contact.Email;
-                    VkTextBox.Text = contact.IdVk;
-                }
-            }
-            else
+                Contact = _findedContacts[selectedIndex]
+            };
+            form.ShowDialog();
+            if (form.Contact == null)
             {
-                SurnameTextBox.Text = null;
-                NameTextBox.Text = null;
-                BirthdayDateTimePicker.Value = new DateTime(1900, 01, 01);
-                PhoneTextBox.Text = null;
-                EmailTextBox.Text = null;
-                VkTextBox.Text = null;
+                return;
             }
+            _project.Contacts[_project.Contacts.
+                IndexOf(_findedContacts[selectedIndex])] = form.Contact;
+            _findedContacts[selectedIndex] = form.Contact;
+            UpdateData();
         }
 
         /// <summary>
-        /// Добавление контакта по клику в выпадающем сверху меню из Edit.
+        /// Добавление контакта 
         /// </summary>
-        private void AddContactStripMenu_Click(object sender, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Add_Click(object sender, EventArgs e)
         {
             AddContact();
         }
 
         /// <summary>
-        /// Выпадение формы About, при клике в верхнем меню на About.
+        /// Редактирование контакта 
         /// </summary>
-        private void AboutStripMenu_Click(object sender, EventArgs e)
-        {
-            var newForm = new AboutForm();
-            newForm.Show();
-        }
-
-        /// <summary>
-        /// Редактирование контакта по клику в выпадающем сверху меню из Edit.
-        /// </summary>
-        private void EditContactStripMenu_Click(object sender, EventArgs e)
-        {
-            EditContact();
-        }
-
-        /// <summary>
-        /// Удаление контакта по клику в выпадающем сверху меню из Edit.
-        /// </summary>
-        private void RemoveContactStripMenu_Click(object sender, EventArgs e)
-        {
-            RemoveContact();
-        }
-
-        /// <summary>
-        /// Закрывает главное окно по клику в выпадающем сверху меню на Exit.
-        /// </summary>
-        private void ExitStripMenu_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
-        /// Функция поиска подстроки.
-        /// </summary>
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (FindTextBox.Text == "")
-            {
-                _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
-                if (ContactsListBox.Items.Count != 0)
-                {
-                    ContactsListBox.Items.RemoveAt(0);
-                }
-                for (int i = 0; i != _project._contactsList.Count; i++)
-                {
-                    ContactsListBox.Items.Add(_project._contactsList[i].Surname);
-                }
-            }
-
-            else
-            {
-                _project = ProjectManager.LoadFromFile(ProjectManager.DefaultFilePath);
-                _sortProject = Project.Sort(_project, FindTextBox.Text);
-                if (_sortProject == null)
-                {
-                    if (ContactsListBox.Items.Count != 0)
-                    {
-                        ContactsListBox.Items.RemoveAt(0);
-                    }
-                }
-                else
-                {
-                    if (ContactsListBox.Items.Count != 0)
-                    {
-                        ContactsListBox.Items.RemoveAt(0);
-                    }
-                    for (int i = 0; i != _sortProject._contactsList.Count; i++)
-                    {
-                        ContactsListBox.Items.Add(_sortProject._contactsList[i].Surname);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Удаление контакта по нажатию клавиши Delete.
-        /// </summary>
-        private void ContactsListBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete)
-            {
-                RemoveContact();
-            }
-        }
-
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            AddContact();
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditButton_Click(object sender, EventArgs e)
         {
             EditContact();
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Удаление контакта 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Remove_Click(object sender, EventArgs e)
         {
-            RemoveContact();
+            DeleteContact();
+        }
+
+        /// <summary>
+        /// Метод, описывающий реакцию на нажатие кнопки About
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Выход из приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// Обновление списка контактов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContactsForm_Load(object sender, EventArgs e)
+        {
+            foreach (var t in _project.Contacts)
+            {
+                ContactsListBox.Items.Add(t.Surname);
+                _findedContacts.Add(t);
+            }
+        }
+
+        /// <summary>
+        /// Отображение контакта на форме
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IsCorrectContent();
+        }
+
+        /// <summary>
+        /// Метод, реализующий поиск контактов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ClearData();
+            foreach (var t in _project.GetByNameOrSurname(FindTextBox.Text))
+            {
+                _findedContacts.Add(t);
+                ContactsListBox.Items.Add(t.Surname);
+            }
+            IsCorrectContent();
+        }
+
+        /// <summary>
+        /// Метод, реализующий удаление контакта по нажатию на клавишу Delete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContactsListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Delete)
+            {
+                return;
+            }
+            DeleteContact();
+        }  
+
+        /// <summary>
+        /// Сохранение данных при закрытии формы 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContactsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveToFile();
+        }
+
+        /// <summary>
+        /// Добавление контакта через ToolStripMenu 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddContact();
+        }
+
+        /// <summary>
+        /// Редактирование контакта через ToolStripMenu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+
+        /// <summary>
+        /// Удаление контакта через ToolStripMenu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteContact();
         }
     }
 }

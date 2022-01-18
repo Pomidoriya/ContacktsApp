@@ -1,20 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace ContactsAppUI
 {
+    /// <summary>
+    /// Класс формы About
+    /// </summary>
     public partial class AboutForm : Form
     {
+        /// <summary>
+        /// Инициализирует все компоненты
+        /// </summary>
         public AboutForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Метод для перехода пользователя по ссылке 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Pomidoriya/ContactsApp");
         }
     }
 }

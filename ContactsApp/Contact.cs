@@ -1,261 +1,214 @@
 ﻿using System;
-//test
+using Newtonsoft.Json;
+
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс, содержащий контакт.
+    /// Класс, хранящий информацию о контакте:
+    /// имя, фамилия, почта, idvk
     /// </summary>
-    public class Contact : ICloneable
+    public class Contact : IEquatable<Contact>, IComparable<Contact>
     {
         /// <summary>
-        /// Фамилия контакта.
+        /// Фамилия
         /// </summary>
         private string _surname;
 
         /// <summary>
-        /// Имя контакта.
+        /// Имя
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// E-mail контакта.
+        /// Почта
         /// </summary>
         private string _email;
 
         /// <summary>
-        /// ID Vkontakte контакта.
+        /// Дата рождения
         /// </summary>
-        private string _idVk;
+        private DateTime _birthDate;
 
         /// <summary>
-        /// Дата рождения контакта.
+        /// idVk
         /// </summary>
-        private DateTime _dateOfBirth;
+        private string _idVK;
 
         /// <summary>
-        /// Телефонный номер контакта.
-        /// </summary>
-        public PhoneNumber phoneNumber = new PhoneNumber();
-
-        /// <summary>
-        /// Ограничение на устанавливаемую дату рождения (минимум 1 января 1900)
-        /// </summary>
-        private readonly DateTime _dateMinimum = new DateTime(1900, 01, 01);
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий дату рождения контакта.
-        /// </summary>
-        public DateTime DateOfBirth
-        {
-            get 
-            { 
-                return _dateOfBirth;
-            }
-            set
-            {
-                //Дата рождения не может быть раньше 1 января 1900 года.
-                if (value < _dateMinimum)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели неправильную дату рождения.\n"
-                        + "Введите дату, начиная с 1900 года.");
-                }
-
-                //Дата рождения не может быть больше нынешней даты.
-                if (value > DateTime.Now)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели неверную дату рождения.\n"
-                        + "Дата рождения не может быть больше," +
-                        " чем нынешняя.\n"
-                        + "Введите дату рождения заново");
-                }
-                else
-                    _dateOfBirth = value;
-            }
-        }
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий ID Vk контакта.
-        /// </summary>
-        public string IdVk
-        {
-            get 
-            { 
-                return _idVk;
-            }
-            set
-            {
-                if (value.Length > 12)
-                {
-                    throw new ArgumentException(
-                        "ID Вконтакте не может превышать 12 символов.\n"
-                        + "Введите ID, который не превышает 12 символов");
-                }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку." +
-                        " Повторите ввод.");
-                }
-                else
-                    _idVk = value;
-            }
-        }
-
-        /// <summary>
-        /// Метод, устанавливающий и возвращающий фамилию контакта.
+        /// Свойства фамилии
         /// </summary>
         public string Surname
         {
-            get 
-            { 
-                return _surname;
-            }
+            get => _surname;
             set
             {
-                //Фамилия не может быть длиннее 50 символов.
-                if (value.Length > 50)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую более чем из 50 символов.\n" +
-                        "Введите фамилию, длиной до 50 символов!");
-                }
-
-                //Фамилия не может быть короче 2 символов (есть фамилии с 2 буквой)
-                if (value.Length < 2)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели фамилию, состоящую менее чем из 2 символов.\n" +
-                        "Введите фамилию, длиной более 2 символов!");
-                }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку.\n" +
-                        "Повторите ввод!");
-                }
-                else
-                {
-                    value.ToLower();
-                    char[] familyChar = value.ToCharArray();
-                    familyChar[0] = char.ToUpper(familyChar[0]);
-                    string familyString = new string(familyChar);
-                    _surname = familyString;
-                }
+                ValidateTitleLength(value);
+                value = ToCorrectRegister(value);
+                _surname = value;
             }
         }
 
         /// <summary>
-        /// Метод, устанавливающий и возвращающий имя контакта.
+        /// Свойства имени
         /// </summary>
         public string Name
         {
-            get 
-            { 
-                return _name;
-            }
+            get => _name;
             set
             {
-                if (value.Length > 60)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели имя, состоящее более чем из 60 символов.\n" +
-                        "Введите имя, длиной до 60 символов!");
-                }
-
-                if (value.Length < 2)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели имя, состоящее менее чем из 2 символов.\n" +
-                        "Введите имя, длиной более 2 символов!");
-                }
-
-                //Проверка на пустую строку.
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку." +
-                        " Повторите ввод!");
-                }
-                else
-                {
-                    value.ToLower();
-                    char[] nameChar = value.ToCharArray();
-                    nameChar[0] = char.ToUpper(nameChar[0]);
-                    string nameString = new string(nameChar);
-
-                    _name = nameString;
-                }
+                ValidateTitleLength(value);
+                value = ToCorrectRegister(value);
+                _name = value;
             }
         }
 
         /// <summary>
-        /// Метод, устанавливающий и возвращающий E-mail контакта.
+        /// Свойство номера телефона
         /// </summary>
+        public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
 
+        /// <summary>
+        /// Свойства даты рождения
+        /// </summary>
+        public DateTime BirthDate
+        {
+            get => _birthDate;
+            set
+            {
+                DateTime nowDate = DateTime.Now;
+                if (value.Year < 1900 || value.Date > nowDate || value == null)
+                {
+                    throw new ArgumentException("Error. Invalid date");
+                }
+                _birthDate = value;
+            }
+        }
+
+        /// <summary>
+        /// Свойство почты
+        /// </summary>
         public string Email
         {
-            get 
-            { 
-                return _email;
-            }
+            get => _email;
             set
             {
-                if (value.Length > 64)
-                {
-                    throw new ArgumentException(
-                        "Вы ввели e-mail, длиной более чем 64 символов.\n" +
-                        "Введите e-mail, длиной до 64 символов!");
-                }
-
-                if (String.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Вы ввели пустую строку. " +
-                        "Повторите ввод!");
-                }
-                else
-                    _email = value;
+                ValidateTitleLength(value);
+                _email = value;
             }
         }
 
         /// <summary>
-        /// Конструктор класса с 6 входными параметрами.
+        /// Свойство idVk
         /// </summary>
-        /// <param name="phoneNumber"></param> Номер телефона контакта.
-        /// <param name="name"></param> Имя контакта.
-        /// <param name="surname"></param> Фамилия контакта.
-        /// <param name="email"></param> E-mail контакта.
-        /// <param name="dateOfBirth"></param> Дата рождения контакта.
-        /// <param name="idVk"></param> ID Vk контакта.
-        public Contact(long phoneNumber, string name, string surname, 
-            string email, DateTime dateOfBirth,string idVk)
+        public string IdVK
         {
-            this.phoneNumber.Number = phoneNumber;
-            Name = name;
-            Surname = surname;
-            Email = email;
-            DateOfBirth = dateOfBirth;
-            IdVk = idVk;
+            get => _idVK;
+            set
+            { 
+                if (value.Length > 15)
+                {
+                    throw new ArgumentException("Error. id in VK must not be more than 15 characters");
+                }
+                ValidateTitleLength(value);
+                _idVK = value;
+            }
         }
 
         /// <summary>
-        /// Реализация клонирования
+        /// Метод для проверки значений. Строка не должна быть пустой или превышать 50 символов.
         /// </summary>
-        /// <returns>Возвращает объект - клон контакта
-        /// </returns>
-        public object Clone()
+        /// <param name="str"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception> 
+        void ValidateTitleLength(string str)
         {
-            return new Contact(phoneNumber.Number, Name, Surname, Email,
-                DateOfBirth, IdVk);
+            if (string.IsNullOrEmpty(str))
+            {
+                throw new ArgumentException("Error. Empty string");
+            }
+            if (str.Length > 50)
+            {
+                throw new ArgumentException("Error. Value must not exceed 50 characters");
+            }
         }
 
         /// <summary>
-        /// Конструктор по умолчанию
+        /// Метод, преобразующий к верхнему регистру первый символ.
         /// </summary>
-        public Contact()
-        { }
+        /// <param name="value"></param>
+        /// <returns></returns>
+        string ToCorrectRegister(string value)
+        {
+            return value.Substring(0, 1).ToUpper() + value.Remove(0, 1);
+        }
+
+        /// <summary>
+        /// конструктор класса по умолчанию
+        /// </summary>
+        public Contact() { }
+
+        /// <summary>
+        /// конструктор со всеми полями класса
+        /// </summary>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="name">Имя</param>
+        /// <param name="birthDate">День Рождения</param>
+        /// <param name="email">Электроонная почта</param>
+        /// <param name="number">Телефнный номер</param>
+        /// <param name="idVK">ID Вконтакте</param>
+        [JsonConstructor]
+        public Contact(string name, string surname, string email, string idVK, 
+            DateTime birthDate, PhoneNumber number)
+        {
+            this.BirthDate = birthDate;
+            this.Email = email;
+            this.IdVK = idVK;
+            this.Name = name;
+            this.Surname = surname;
+            this.PhoneNumber = number;
+        }
+
+        public bool Equals(Contact other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return _surname == other._surname 
+                   && _name == other._name 
+                   && _email == other._email 
+                   && _birthDate.Equals(other._birthDate) 
+                   && _idVK == other._idVK 
+                   && Equals(PhoneNumber, other.PhoneNumber);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == this.GetType() && Equals((Contact) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (_surname != null ? _surname.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_name != null ? _name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ (_idVK != null ? _idVK.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (PhoneNumber != null ? PhoneNumber.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        /// <summary>
+        /// Метод для реализации интерфейса IComporable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Contact other)
+        {
+            return other == null ? 1 : String.Compare(_surname, other._surname, StringComparison.Ordinal);
+        }
     }
 }
-
-
-

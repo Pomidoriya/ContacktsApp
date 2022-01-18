@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using ContactsApp;
 
 namespace ContactsApp.UnitTests
 {
-    [TestFixture]
     class ProjectTest
     {
     }

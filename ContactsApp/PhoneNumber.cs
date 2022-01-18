@@ -1,47 +1,61 @@
 ﻿using System;
 
-
 namespace ContactsApp
 {
     /// <summary>
-    /// Класс, принимающий и возвращающий номер телефона учащегося.
+    /// Класс хранящий информацию о номере телефона
     /// </summary>
-    public class PhoneNumber
+    public class PhoneNumber : IEquatable<PhoneNumber>
     {
-        private long _number;
         /// <summary>
-        /// Метод, устанавливающий и возвращающий номер контакта.
+        /// Номер телефона
         /// </summary>
+        private long _number;
+
+        /// <summary>
+        /// Задает номер телефона
+        /// Тефонный номер должен быть 11 цифр и начинаться с 7
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public long Number
         {
-            get { return _number; }
+            get => _number;
             set
             {
-                //Проверка на начало номера с 8.
-                if (value.ToString()[0] != '8')
-                {
-                    throw new ArgumentException("Enter a phone number starting with 8.");
-                }
-
-                //Проверка на количество цифр.
-                if (value > 99999999999)
-                {
-                    throw new ArgumentException("You have entered an incorrect value," +
-                        " please enter a number consisting of 11 digits!");
-                }
-
-                //Проверка на количество цифр
-                if (value < 10000000000)
-                {
-                    throw new ArgumentException("You have entered an incorrect value," +
-                        " please enter a number consisting of 11 digits!");
-                }
-
-                else
+                if (value >= 70000000000 && value <= 79999999999)
                 {
                     _number = value;
                 }
+                else
+                {
+                    throw new ArgumentException(
+                        "Error. The number must contain 11 digits, the first digit must be 7");
+                }
             }
+        }
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public PhoneNumber() { }
+
+        public bool Equals(PhoneNumber other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return _number == other._number;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == this.GetType() && Equals((PhoneNumber) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return _number.GetHashCode();
         }
     }
 }

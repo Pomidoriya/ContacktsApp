@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("ContacktsAppUI")]
+[assembly: AssemblyTitle("ContactsAppUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ContacktsAppUI")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyProduct("ContactsAppUI")]
+[assembly: AssemblyCopyright("Copyright © HP Inc. 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("91815886-67e7-40b3-908f-994c5482915a")]
+[assembly: Guid("1394b4b7-fee7-4fc8-812f-5c3ddb87ec85")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
