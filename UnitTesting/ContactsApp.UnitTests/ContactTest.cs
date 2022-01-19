@@ -20,7 +20,7 @@ namespace ContactsApp.UnitTests
         public void TestSurnameGet_CorrectValue()
         {
             SetUp();
-            var expected = "Иванов";
+            var expected = "Басков";
             _testContact.Surname = expected;
             var actual = _testContact.Surname;
             Assert.AreEqual(expected, actual, "Геттер Surname возвращает неправильную фамилию");
@@ -30,14 +30,14 @@ namespace ContactsApp.UnitTests
         public void TestSurnameSet_CorrectValue()
         {
             SetUp();
-            _testContact.Surname = "Иванов";
+            _testContact.Surname = "Басков";
             var actual = _testContact.Surname;
             Assert.AreEqual(actual, _testContact.Surname, "Сеттер неправильно заполнил фамилию");
         }
 
         [TestCase("", "Должно возникать исключение, если фамилия - пустая строка",
             TestName = "Присвоение пустой строки в качестве фамилии")]
-        [TestCase("Смирнов-Смирнов-Смирнов-Смирнов-Смирнов-Смирнов-Смирнов-Смирнов", 
+        [TestCase("Басков-Басков-Басков-Басков-Басков-Басков-Басков-Басков-Басков", 
             "Должно возникать исключение, если фамилия длиннее 50 символов",
             TestName = "Присвоение неправильной фамилии больше 50 символов")]
         public void TestSurnameSet_ArgumentException(string wrongSurname, string message)
@@ -52,7 +52,7 @@ namespace ContactsApp.UnitTests
         public void TestNameGet_CorrectValue()
         {
             SetUp();
-            var expected = "Иван";
+            var expected = "Николя";
 
             _testContact.Name = expected;
             var actual = _testContact.Name;
@@ -63,14 +63,14 @@ namespace ContactsApp.UnitTests
         public void TestNameSet_CorrectValue()
         {
             SetUp();
-            _testContact.Name = "Иван";
+            _testContact.Name = "Николя";
             var actual = _testContact.Name;
             Assert.AreEqual(actual, _testContact.Name, "Сеттер неправильно заполнил имя");
         }
 
         [TestCase("", "Должно возникать исключение, если имя - пустая строка",
             TestName = "Присвоение пустой строки в качестве имени")]
-        [TestCase("Иван-Иван-Иван-Иван-Иван-Иван-Иван-Иван-Иван-Иван-Иван", 
+        [TestCase("Николя-Николя-Николя-Николя-Николя-Николя-Николя-Николя", 
             "Должно возникать исключение, если имя длиннее 50 символов", 
             TestName = "Присвоение неправильного имени больше 50 символов")]
         public void TestNameSet_ArgumentException(string wrongName, string message)
@@ -85,7 +85,7 @@ namespace ContactsApp.UnitTests
         public void TestMailGet_CorrectValue()
         {
             SetUp();
-            var expected = "Mnatsakanyan300800@mail.ru";
+            var expected = "igorserd2909@mail.ru";
 
             _testContact.Email = expected;
             var actual = _testContact.Email;
@@ -96,7 +96,7 @@ namespace ContactsApp.UnitTests
         public void TestMailSet_CorrectValue()
         {
             SetUp();
-            _testContact.Email = "mnatsakanyan.ani@mail.ru";
+            _testContact.Email = "igorserd.igor@mail.ru";
             var actual = _testContact.Email;
             Assert.AreEqual(actual, _testContact.Email, "Сеттер неправильно заполнил почту");
         }
@@ -104,7 +104,7 @@ namespace ContactsApp.UnitTests
         [TestCase("",
             "Должно возникать исключение, если Email - пустая строка",
             TestName = "Присвоение пустой строки в качестве почты")]
-        [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@mail.ru",
+        [TestCase("igorserdigorserdigorserdigorserdigorserdigorserdigorserdigorserd@mail.ru",
             "Должно возникать исключение, если почта больше 50 символов",
             TestName = "Присвоение неправильной почты больше 50 символов")]
         public void TestMailSet_ArgumentException(string wrongEmail, string message)
@@ -119,7 +119,7 @@ namespace ContactsApp.UnitTests
         public void TestIdVkGet_CorrectValue()
         {
             SetUp();
-            var expected = "id777777";
+            var expected = "id123456";
 
             _testContact.IdVK = expected;
             var actual = _testContact.IdVK;
@@ -130,7 +130,7 @@ namespace ContactsApp.UnitTests
         public void TestIdVkSet_CorrectValue()
         {
             SetUp();
-            _testContact.IdVK = "iamani.i00";
+            _testContact.IdVK = "igorserd.igor";
             var actual = _testContact.IdVK;
             Assert.AreEqual(actual, _testContact.IdVK, "Сеттер неправильно заполнил idVk");
         }
