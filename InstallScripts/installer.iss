@@ -1,29 +1,39 @@
-#define MyAppExeName "ContactsApp.exe"
 #define MyAppName "ContactsApp"
 #define MyAppVersion "1.0.0"
+#define MyAppExeName "ContactsAppUI.exe"
+#define MyAppAssocName MyAppName + " File"
+#define MyAppAssocExt ".myp"
+#define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
+#define AppIconName "Cont.ico"
 
 [Setup]
-AppId={{F786CD3E-3A63-4282-B639-5DE65EAD7B71}
-AppName = {#MyAppName}
+AppId={{1803675C-CA97-49C4-B5AC-57510D60E4F5}
+AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-DefaultDirName = {pf}\{#MyAppName}
-DisableProgramGroupPage = yes
-OutputBaseFilename = ContactsAppSetup
-Compression = lzma
-SolidCompression = yes
-OutputDir = "Installers"
+DefaultDirName={pf}\{#MyAppName}
+OutputBaseFilename=ContactsAppSetup
+ChangesAssociations=yes
+DisableProgramGroupPage=yes
+OutputDir="Installers"
+SetupIconFile="..\ContactsAppUI\{#AppIconName}"
+Compression=lzma
+SolidCompression=yes
+WizardStyle=modern
 
-[languages]
-Name: "en"; MessagesFile: "compiler:Default.isl"
+[Languages]
+Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "Release\ContactsApp.dll"; DestDir: "{app}"
-Source: "Release\Newtonsoft.Json.dll"; DestDir: "{app}"
-Source: "Release\ContactsApp.exe"; DestDir: "{app}"
+Source: "Release\*.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Release\*.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\ContactsAppUI\{#AppIconName}"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon;
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFileName: "{app}\{#AppIconName}"; Tasks: desktopicon
+
+[Run]
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
