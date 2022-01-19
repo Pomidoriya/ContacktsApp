@@ -32,7 +32,7 @@ namespace ContactsAppUI
         private bool _isCorrectContact;
 
         /// <summary>
-        /// Переменная, хранящая недопустимые для ввода символы
+        /// Переменная, хранящая недопустимые для ввода символы для полей Name и Surname
         /// </summary>
         string _incorrectSymbols = @"123456789!@#$%^&*()_+|-=\.,<>";
 
@@ -114,7 +114,9 @@ namespace ContactsAppUI
             }
             else
             {
-                MessageBox.Show("Check if the values are correct and try again",
+                MessageBox.Show("Check if the values are correct and try again\n" +
+                    "If you have a questions, point a lable\n" +
+                    "Be careful!",
                     "" , MessageBoxButtons.OK);
             }
         }

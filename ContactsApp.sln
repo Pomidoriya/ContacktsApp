@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTesting", "UnitTesting"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UnitTests", "UnitTesting\ContactsApp.UnitTests\ContactsApp.UnitTests.csproj", "{66F6D82D-E5A1-4337-8937-B9D93301F2F9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FF628403-67ED-4957-9E54-5E2B4517100B}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Uml диаграмма.png = Documentation\Uml диаграмма.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
