@@ -42,7 +42,7 @@ namespace ContactsAppUI
             if (listBirthday != "")
             {
                 BirthdayPanel.Visible = true;
-                BirthDateLabel.Text = "Today is the birthday of: ";
+                BirthDateLabel.Text = "Today is the birthday of:\n• ";
                 var birthdayLabelText = listBirthday;
                 BirthDateLabel.Text += birthdayLabelText;
             }

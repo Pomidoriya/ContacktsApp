@@ -30,7 +30,7 @@ namespace ContactsApp
         {
             var listContacts = Contacts.Where(First => First.BirthDate.Day == DateTime.Now.Day &&
                                                        First.BirthDate.Month == DateTime.Now.Month);
-            return string.Join(",", listContacts.Select(contact => contact.Surname).ToList());
+            return string.Join("\n•", listContacts.Select(contact => contact.Surname).ToList());
         }
 
         /// <summary>

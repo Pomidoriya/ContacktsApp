@@ -171,19 +171,20 @@
             // 
             this.BirthdayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthdayPanel.AutoScroll = true;
             this.BirthdayPanel.Controls.Add(this.TodayBdayPictureBox);
             this.BirthdayPanel.Controls.Add(this.BirthDateLabel);
-            this.BirthdayPanel.Location = new System.Drawing.Point(311, 407);
+            this.BirthdayPanel.Location = new System.Drawing.Point(311, 348);
             this.BirthdayPanel.Margin = new System.Windows.Forms.Padding(4);
             this.BirthdayPanel.Name = "BirthdayPanel";
-            this.BirthdayPanel.Size = new System.Drawing.Size(533, 91);
+            this.BirthdayPanel.Size = new System.Drawing.Size(533, 153);
             this.BirthdayPanel.TabIndex = 22;
             // 
             // TodayBdayPictureBox
             // 
             this.TodayBdayPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("TodayBdayPictureBox.Image")));
             this.TodayBdayPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("TodayBdayPictureBox.InitialImage")));
-            this.TodayBdayPictureBox.Location = new System.Drawing.Point(4, 4);
+            this.TodayBdayPictureBox.Location = new System.Drawing.Point(4, 36);
             this.TodayBdayPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.TodayBdayPictureBox.Name = "TodayBdayPictureBox";
             this.TodayBdayPictureBox.Size = new System.Drawing.Size(85, 84);
@@ -193,7 +194,7 @@
             // BirthDateLabel
             // 
             this.BirthDateLabel.AutoSize = true;
-            this.BirthDateLabel.Location = new System.Drawing.Point(93, 37);
+            this.BirthDateLabel.Location = new System.Drawing.Point(93, 69);
             this.BirthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BirthDateLabel.Name = "BirthDateLabel";
             this.BirthDateLabel.Size = new System.Drawing.Size(78, 17);
