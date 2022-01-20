@@ -58,7 +58,7 @@
             this.VarsionLabel.Name = "VarsionLabel";
             this.VarsionLabel.Size = new System.Drawing.Size(55, 18);
             this.VarsionLabel.TabIndex = 1;
-            this.VarsionLabel.Text = "v. 0.0.1";
+            this.VarsionLabel.Text = "v. 1.0.0";
             // 
             // AuthorAboutLabel
             // 
@@ -142,7 +142,7 @@
             this.Controls.Add(this.AuthorAboutLabel);
             this.Controls.Add(this.VarsionLabel);
             this.Controls.Add(this.ContactsAppLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(543, 456);
             this.MinimumSize = new System.Drawing.Size(543, 456);
             this.Name = "AboutForm";
