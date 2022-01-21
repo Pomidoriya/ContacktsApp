@@ -50,13 +50,13 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Тест метода LoadFromFile")]
         public void ProjectManager_LoadCorrectData_FileLoadCorrected()
         {
-            //SetUp
+            // SetUp
             var expectedProject = GetCorrectProject();
 
-            //Act
+            // Act
             var actualProject = ProjectManager.LoadFromFile(Location, "correctproject.json");
 
-             //Assert
+             // Assert
             Assert.AreEqual(expectedProject.Contacts.Count, actualProject.Contacts.Count);
 
             Assert.Multiple(() =>
@@ -74,24 +74,24 @@ namespace ContactsApp.UnitTests
         [TestCase(Description = "Негативный тест загрузки", TestName ="Загрузка некорректного файла")]
         public void ProjectManager_LoadIncorrectData_FileLoadIncorrectly()
         {
-            //Act
+            // Act
             var actualProject = ProjectManager.LoadFromFile(Location, "incorrectproject.json");
             Assert.IsNotNull(actualProject);
             var expectedCount = 0;
 
-            //Assert
+            // Assert
             Assert.AreEqual(expectedCount, actualProject.Contacts.Count);
         }
 
         [TestCase(Description = "Негативный тест загрузки", TestName = "Загрузка пустого файла")]
         public void ProjectManager_LoadNullData_FileLoadIncorrectly()
         {
-            //Act
+            // Act
             var actualProject = ProjectManager.LoadFromFile("\\lkjhgfd", "\\sdfghjk.json\\");
             Assert.IsNotNull(actualProject);
             var expectedCount = 0;
 
-            //Assert
+            // Assert
             Assert.AreEqual(expectedCount, actualProject.Contacts.Count);
         }
 

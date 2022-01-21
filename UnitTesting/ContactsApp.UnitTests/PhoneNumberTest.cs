@@ -18,29 +18,29 @@ namespace ContactsApp.UnitTests
         [Test(Description = "Позитивный тест геттера Number")]
         public void TestNumberGet_CorrectValue()
         {
-            //SetUp
+            // SetUp
             SetUp();
 
-            //Act
+            // Act
             var expected = 79531817562;
             _testNumber.Number = expected;
             var actual = _testNumber.Number;
 
-            //Assert
+            // Assert
             Assert.AreEqual(expected, actual, "Геттер Number возвращает неправильный номер");
         }
 
         [Test(Description = "Позитивный тест сеттера Number")]
         public void TestNumberSet_CorrectValue()
         {
-            //SetUp
+            // SetUp
             SetUp();
 
-            //Act
+            // Act
             _testNumber.Number = 79523658444;
             var actual = _testNumber.Number;
 
-            //Assert
+            // Assert
             Assert.AreEqual(actual, _testNumber.Number, "Сеттер неправильно заполнил номер");
         }
 
@@ -52,10 +52,10 @@ namespace ContactsApp.UnitTests
             TestName = "Присвоение неправильного номера длиннее 11 символов")]
         public void TestNumberSet_ArgumentException(long wrongNumber, string message)
         {
-            //SetUp
+            // SetUp
             SetUp();
 
-            //Assert
+            // Assert
             Assert.Throws<ArgumentException>(
                 () => { _testNumber.Number = wrongNumber; }, message);
         }

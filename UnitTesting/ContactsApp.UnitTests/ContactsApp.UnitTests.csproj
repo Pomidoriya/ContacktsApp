@@ -58,8 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestData\correctproject.json" />
-    <None Include="TestData\incorrectproject.json" />
+    <None Include="TestData\correctproject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\incorrectproject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ContactsApp\ContactsApp.csproj">
