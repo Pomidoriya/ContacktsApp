@@ -36,8 +36,8 @@
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.EditButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.TodayBdayPictureBox = new System.Windows.Forms.PictureBox();
+            this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.BirthDateLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SurnameLabel = new System.Windows.Forms.Label();
@@ -62,8 +62,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            this.BirthdayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TodayBdayPictureBox)).BeginInit();
+            this.BirthdayPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -158,7 +158,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.TodayBdayPictureBox);
             this.panel1.Controls.Add(this.BirthdayPanel);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -168,33 +167,34 @@
             this.panel1.Size = new System.Drawing.Size(936, 514);
             this.panel1.TabIndex = 19;
             // 
-            // BirthdayPanel
-            // 
-            this.BirthdayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BirthdayPanel.AutoScroll = true;
-            this.BirthdayPanel.Controls.Add(this.BirthDateLabel);
-            this.BirthdayPanel.Location = new System.Drawing.Point(400, 375);
-            this.BirthdayPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.BirthdayPanel.Name = "BirthdayPanel";
-            this.BirthdayPanel.Size = new System.Drawing.Size(444, 126);
-            this.BirthdayPanel.TabIndex = 22;
-            // 
             // TodayBdayPictureBox
             // 
             this.TodayBdayPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("TodayBdayPictureBox.Image")));
             this.TodayBdayPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("TodayBdayPictureBox.InitialImage")));
-            this.TodayBdayPictureBox.Location = new System.Drawing.Point(315, 374);
+            this.TodayBdayPictureBox.Location = new System.Drawing.Point(4, 4);
             this.TodayBdayPictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.TodayBdayPictureBox.Name = "TodayBdayPictureBox";
             this.TodayBdayPictureBox.Size = new System.Drawing.Size(77, 84);
             this.TodayBdayPictureBox.TabIndex = 22;
             this.TodayBdayPictureBox.TabStop = false;
             // 
+            // BirthdayPanel
+            // 
+            this.BirthdayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthdayPanel.AutoScroll = true;
+            this.BirthdayPanel.Controls.Add(this.TodayBdayPictureBox);
+            this.BirthdayPanel.Controls.Add(this.BirthDateLabel);
+            this.BirthdayPanel.Location = new System.Drawing.Point(311, 375);
+            this.BirthdayPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.BirthdayPanel.Name = "BirthdayPanel";
+            this.BirthdayPanel.Size = new System.Drawing.Size(533, 126);
+            this.BirthdayPanel.TabIndex = 22;
+            // 
             // BirthDateLabel
             // 
             this.BirthDateLabel.AutoSize = true;
-            this.BirthDateLabel.Location = new System.Drawing.Point(5, 18);
+            this.BirthDateLabel.Location = new System.Drawing.Point(86, 17);
             this.BirthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BirthDateLabel.Name = "BirthDateLabel";
             this.BirthDateLabel.Size = new System.Drawing.Size(78, 17);
@@ -458,9 +458,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContactsForm_FormClosing);
             this.Load += new System.EventHandler(this.ContactsForm_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TodayBdayPictureBox)).EndInit();
             this.BirthdayPanel.ResumeLayout(false);
             this.BirthdayPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TodayBdayPictureBox)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

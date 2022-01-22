@@ -27,7 +27,7 @@ namespace ContactsApp
         /// <summary>
         /// Дата рождения
         /// </summary>
-        private DateTime _birthDate;
+        private DateTime _DateOfBirth;
 
         /// <summary>
         /// idVk
@@ -72,7 +72,7 @@ namespace ContactsApp
         /// </summary>
         public DateTime BirthDate
         {
-            get => _birthDate;
+            get => _DateOfBirth;
             set
             {
                 DateTime nowDate = DateTime.Now;
@@ -80,7 +80,7 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Error. Invalid date");
                 }
-                _birthDate = value;
+                _DateOfBirth = value;
             }
         }
 
@@ -175,7 +175,7 @@ namespace ContactsApp
             return _surname == other._surname 
                    && _name == other._name 
                    && _email == other._email 
-                   && _birthDate.Equals(other._birthDate) 
+                   && _DateOfBirth.Equals(other._DateOfBirth) 
                    && _idVK == other._idVK 
                    && Equals(PhoneNumber, other.PhoneNumber);
         }
@@ -194,7 +194,7 @@ namespace ContactsApp
                 var hashCode = (_surname != null ? _surname.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (_name != null ? _name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (_email != null ? _email.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ _birthDate.GetHashCode();
+                hashCode = (hashCode * 397) ^ _DateOfBirth.GetHashCode();
                 hashCode = (hashCode * 397) ^ (_idVK != null ? _idVK.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (PhoneNumber != null ? PhoneNumber.GetHashCode() : 0);
                 return hashCode;
