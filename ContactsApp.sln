@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UnitTests", "Un
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FF628403-67ED-4957-9E54-5E2B4517100B}"
 	ProjectSection(SolutionItems) = preProject
-		Documentation\Uml диаграмма.png = Documentation\Uml диаграмма.png
+		Documentation\Календарный план и смета.docx = Documentation\Календарный план и смета.docx
+		Documentation\Пояснительная записка.docx = Documentation\Пояснительная записка.docx
+		Documentation\Ретроспектива.docx = Documentation\Ретроспектива.docx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{B4FB5B61-B763-4B1D-B787-92F23BFF9B6E}"
