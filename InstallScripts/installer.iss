@@ -7,7 +7,7 @@
 #define AppIconName "Cont.ico"
 
 [Setup]
-AppId={{1803675C-CA97-49C4-B5AC-57510D60E4F5}
+AppId={{5692675C-AG66-56A3-B5AC-58960A32E4F5}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 DefaultDirName={pf}\{#MyAppName}
