@@ -202,7 +202,7 @@ namespace ContactsAppUI
         {
             if (DateBirthDay.Value.Year >= 1900 && DateBirthDay.Value <= DateTime.Now)
             {
-                BirthDayLabel.Text = "BirthDay";
+                BirthDayLabel.Text = "BirthDay:";
                 BirthDayLabel.ForeColor = Color.Black;
             }
             else

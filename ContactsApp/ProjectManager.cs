@@ -12,7 +12,7 @@ namespace ContactsApp
         /// <summary>
         /// Переменная хранящая путь к сохранению файла сериализации
         /// </summary>
-        public static string DefaultFilename
+        public static string DefaultFilePath
         {
             get
             {

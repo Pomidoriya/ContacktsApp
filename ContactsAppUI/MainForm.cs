@@ -20,7 +20,7 @@ namespace ContactsAppUI
         /// <summary>
         /// Переменная хранящая путь 
         /// </summary>
-        private string _defaultFilename = ProjectManager.DefaultFilename;
+        private string _defaultFilePath = ProjectManager.DefaultFilePath;
 
         /// <summary>
         /// Инициализирует все компоненты, загружает информацию по контактам 
@@ -28,7 +28,7 @@ namespace ContactsAppUI
         public MainForm()
         {
             InitializeComponent();
-            _project = ProjectManager.LoadFromFile(_defaultFilename, "contact.json");
+            _project = ProjectManager.LoadFromFile(_defaultFilePath, "contact.json");
             _project.SortList();
             CheckBirthdayToday();
         }
@@ -113,7 +113,7 @@ namespace ContactsAppUI
         /// </summary>
         private void SaveToFile()
         {
-            ProjectManager.SaveToFile(_project, _defaultFilename, "contact.json");
+            ProjectManager.SaveToFile(_project, _defaultFilePath, "contact.json");
         }
 
         /// <summary>
@@ -186,6 +186,13 @@ namespace ContactsAppUI
                 IndexOf(_findedContacts[selectedIndex])] = form.Contact;
             _findedContacts[selectedIndex] = form.Contact;
             UpdateData();
+            ClearData();
+            foreach (var t in _project.GetByNameOrSurname(FindTextBox.Text))
+            {
+                _findedContacts.Add(t);
+                ContactsListBox.Items.Add(t.Surname);
+            }
+            IsCorrectContent();
         }
 
         /// <summary>
@@ -268,7 +275,7 @@ namespace ContactsAppUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        public void FindTextBox_TextChanged(object sender, EventArgs e)
         {
             ClearData();
             foreach (var t in _project.GetByNameOrSurname(FindTextBox.Text))
